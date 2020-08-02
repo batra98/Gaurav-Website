@@ -2,7 +2,7 @@
   <img alt="Logo" src="https://raw.githubusercontent.com/bchiang7/v4/master/src/images/logo.png" width="100" />
 </div>
 <h1 align="center">
-  [gauravbatra.netlify.app](https://gauravbatra.netlify.app/)
+  gauravbatra.netlify.app
 </h1>
 <p align="center">
   <a href="https://app.netlify.com/sites/gauravbatra/deploys" target="_blank">
