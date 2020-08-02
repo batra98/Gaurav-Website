@@ -1,10 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
+import {media} from '@styles';
 
 
 const StyledContainer = styled.div`
-  padding: 95px;
-  margin-top: 10px;
+  position: relative;
+  width: 60%;
+  max-width: 700px;
+  margin-left: 0px;
+  ${media.tablet`margin: 60px auto 0;`};
+  ${media.phablet`width: 70%;`};
+  a {
+    &:focus {
+      outline: 0;
+    }
+  }
 `;
 
 const GitHubGraph = () => (
