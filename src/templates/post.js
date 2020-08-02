@@ -1,4 +1,5 @@
 import React from 'react';
+import HyvorTalk from 'hyvor-talk-react';
 import { graphql, Link } from 'gatsby';
 import Helmet from 'react-helmet';
 import kebabCase from 'lodash/kebabCase';
@@ -74,6 +75,7 @@ const PostTemplate = ({ data, location }) => {
         </StyledPostHeader>
 
         <StyledPostContent dangerouslySetInnerHTML={{ __html: html }} />
+        <HyvorTalk.Embed websiteId={1478} />
       </StyledPostContainer>
     </Layout>
   );
