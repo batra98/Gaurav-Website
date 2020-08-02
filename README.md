@@ -2,7 +2,7 @@
   <img alt="Logo" src="https://raw.githubusercontent.com/bchiang7/v4/master/src/images/logo.png" width="100" />
 </div>
 <h1 align="center">
-  brittanychiang.com - v4
+  [gauravbatra.netlify.app](https://gauravbatra.netlify.app/)
 </h1>
 <p align="center">
   <a href="https://app.netlify.com/sites/gauravbatra/deploys" target="_blank">
@@ -58,6 +58,8 @@
 
 ## Comment Support
 
-Comment Support has been added by using [HYVOR TALK](https://talk.hyvor.com/).
+1. Comment Support in the blogs has been added by using [HYVOR TALK](https://talk.hyvor.com/).
+2. Feel free to share your thoughts :heart:.
+
 
 
