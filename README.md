@@ -58,6 +58,8 @@
 
 ## Comment Support
 
+![Comments](https://github.com/batra98/Gaurav-Website/blob/master/src/images/Comments.png)
+
 1. Comment Support in the blogs has been added by using [HYVOR TALK](https://talk.hyvor.com/).
 2. Feel free to share your thoughts :heart:.
 
