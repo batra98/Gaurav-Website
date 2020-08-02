@@ -4,7 +4,7 @@ module.exports = {
     'I\'m a undergraduate researcher, currently completing my bachelors at IIIT, Hyderabad. I\'m an honours research student at the Machine Learning Lab, where I work on algorithms in the Multi-Arm Bandit Setting.',
   siteKeywords:
     'Gaurav Batra, Gaurav, Batra, suzaku_kuru, Suzaku_kuru, machine lerning, Reinforcement Learning, Software Engineer',
-  siteUrl: 'https://gauravbatra.com',
+  siteUrl: 'https://gauravbatra.netlify.app/',
   siteLanguage: 'en_US',
   googleAnalyticsID: 'UA-174145610-2',
   // googleVerification: 'DCl7VAf9tcz6eD9gb67NfkNnJ1PKRNcg8qQiwpbx9Lk',
