@@ -1,5 +1,5 @@
 <div align="center">
-  <img alt="Logo" src="https://raw.githubusercontent.com/bchiang7/v4/master/src/images/logo.png" width="100" />
+  <img alt="Logo" src="https://raw.githubusercontent.com/batra98/Gaurav-Website/master/src/images/logo.png?token=AH5IC5RGLKRRSNHGTZXJ7AK7HOTEQ" width="100" />
 </div>
 <h1 align="center">
   gauravbatra.netlify.app
@@ -14,7 +14,7 @@
 1. This website is originally designed by [Brittany Chiang](https://brittanychiang.com/).
 2. Please provide proper credit to her in case you use this website.
 
-![demo](https://raw.githubusercontent.com/bchiang7/v4/master/src/images/demo.png)
+![demo](https://raw.githubusercontent.com/batra98/Gaurav-Website/master/src/images/demo.png?token=AH5IC5TG4THN4WOKX77UJVK7HOTGS)
 
 ## 🛠 Installation & Set Up
 
@@ -58,7 +58,7 @@
 
 ## Comment Support
 
-![Comments](https://github.com/batra98/Gaurav-Website/blob/master/src/images/Comments.png)
+![Comments](https://raw.githubusercontent.com/batra98/Gaurav-Website/master/src/images/Comments.png?token=AH5IC5UPOS24XMZLVSWYRU27HOTLG)
 
 1. Comment Support in the blogs has been added by using [HYVOR TALK](https://talk.hyvor.com/).
 2. Feel free to share your thoughts :heart:.
