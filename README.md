@@ -1,5 +1,5 @@
 <div align="center">
-  <img alt="Logo" src="https://raw.githubusercontent.com/batra98/Gaurav-Website/master/src/images/logo.png?token=AH5IC5RGLKRRSNHGTZXJ7AK7HOTEQ" width="100" />
+  <img alt="Logo" src="https://raw.githubusercontent.com/batra98/Gaurav-Website/master/src/images/favicons/apple-touch-icon-180x180-precomposed.png?token=AH5IC5RLTPVP66EU6V4LHG27HOTXW" width="100" />
 </div>
 <h1 align="center">
   gauravbatra.netlify.app
