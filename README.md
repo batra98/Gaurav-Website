@@ -10,6 +10,9 @@
   </a>
 </p>
 
+#Developer
+Gaurav Batra
+
 ## Designed by [Brittany Chiang](https://brittanychiang.com/)
 1. This website is originally designed by [Brittany Chiang](https://brittanychiang.com/).
 2. Please provide proper credit to her in case you use this website.
