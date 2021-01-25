@@ -27,7 +27,14 @@ The story revolves around Eren Yeager and his comrades, who battle these mindles
 
 The show is set in an quasi-germanic society which is full of german architecture. The characters too have German names. Even the opening sequence is in German.
 
-<iframe src=http://mp3anime.tk/embed/162 allow="autoplay" scrolling=no width=400 height=120 frameborder=0></iframe>
+<!-- <iframe src=http://mp3anime.tk/embed/162 allow="autoplay" scrolling=no width=400 height=120 frameborder=0></iframe> -->
+
+<!-- <audio ref='themeSong' src="https://raw.githubusercontent.com/batra98/Gaurav-Website/master/content/posts/Attack-on-Titan-and-German-Philosophy/theme.mp3" autoPlay loop></audio> -->
+
+<audio controls="controls">
+  <source type="audio/mp3" src="https://raw.githubusercontent.com/batra98/Gaurav-Website/master/content/posts/Attack-on-Titan-and-German-Philosophy/theme.mp3"></source>
+  <p>Your browser does not support the audio element.</p>
+</audio>
 
 This doesnot end the show's similarities with German history.
 The political ideology of the society lines up with a famous Nazi philosopher - [Carl Schmitt](https://en.wikipedia.org/wiki/Carl_Schmitt)
