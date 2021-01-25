@@ -2,7 +2,7 @@
 title: Interesting Insights about the website
 description: Using Google Analytics and Google Data Studio to gather interesting info about my website.
 date: '2021-01-18'
-draft: false
+draft: true
 slug: '/pensieve/interesting-insights'
 tags:
   - General
