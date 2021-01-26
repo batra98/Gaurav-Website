@@ -16,7 +16,7 @@ Attack on titan is a English translation of the bestselling manga Shingeki no Ky
 
 The plot depicts a near extinct human race devoured by thoughtless cannibalistic giants, hints at a vast conspiracy, and feats of heroism that only occasionally break the unrelenting sense of imminent doom. This series is clearly a modern epic fantasy.
 
-The story revolves around Eren Yeager and his comrades, who battle these mindless titans. This manga explores the viscreal reality of death which is unlike any other anime/manga. Titan are the physical personification of death, walking reminders of human mortality. But the darkest elements of the series are not the titans (and their lack of genitals :wink:) but the structure of the society behind the walls.
+The story revolves around Eren Yeager and his comrades, who battle these mindless titans. This manga explores the viscreal reality of death which is unlike any other anime/manga. Titan are the physical personification of death, walking reminders of human mortality. But the darkest elements of the series are not the titans (and their lack of genitals 😉) but the structure of the society behind the walls.
 
 ## Relational to German Ideology
 

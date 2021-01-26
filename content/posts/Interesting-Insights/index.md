@@ -12,8 +12,8 @@ While exploring [Google Analytics](https://analytics.google.com/analytics/web/#/
 
 ### Audience Overview
 
-<iframe width="100%" height="900" src="https://datastudio.google.com/embed/reporting/ae5839ef-586d-4113-b551-8cb5a887eca0/page/tWDGB" frameborder="0" style="border:0" allowfullscreen></iframe>
+<iframe width="100%" height="900" src="https://datastudio.google.com/embed/reporting/ae5839ef-586d-4113-b551-8cb5a887eca0/page/tWDGB" frameborder="0" style="border:0" allowfullscreen scrollling="no"></iframe>
 
 ### Audience Behaviour
 
-<iframe width="100%" height="900" src="https://datastudio.google.com/embed/reporting/e418a783-c4dc-4369-a487-09241fbaebf5/page/4VDGB" frameborder="0" style="border:0" allowfullscreen></iframe>
+<iframe width="100%" height="900" src="https://datastudio.google.com/embed/reporting/e418a783-c4dc-4369-a487-09241fbaebf5/page/4VDGB" frameborder="0" style="border:0" allowfullscreen scrollling="no"></iframe>
