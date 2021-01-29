@@ -75,7 +75,7 @@ const PostTemplate = ({ data, location }) => {
         </StyledPostHeader>
 
         <StyledPostContent dangerouslySetInnerHTML={{ __html: html }} />
-        <HyvorTalk.Embed websiteId={1478} loadMode="scroll"/>
+        <HyvorTalk.Embed websiteId={1478} id={title} loadMode="scroll" />
       </StyledPostContainer>
     </Layout>
   );
