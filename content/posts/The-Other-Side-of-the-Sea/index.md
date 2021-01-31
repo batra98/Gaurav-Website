@@ -46,7 +46,7 @@ She is a smart and cheeky girl, who has a lot of potential for growth.
 
 #### Beast Titan swirls rocks at a fleet, Armoured Titan smashes walls and takes out big guns. (The usual stuff 😉)
 
-![Armoured-Jaw](https://raw.githubusercontent.com/batra98/Gaurav-Website/master/content/posts/The-Other-Side-of-the-Sea/armoured.gif)
+![Armoured-Jaw](armoured.jpg)
 
 ![Beast Titan](./beast.jpg)
 
