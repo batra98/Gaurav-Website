@@ -2,7 +2,7 @@
 title: Interesting Insights about the website
 description: Using Google Analytics and Google Data Studio to gather interesting info about my website.
 date: '2021-01-18'
-draft: true
+draft: false
 slug: '/pensieve/interesting-insights'
 tags:
   - General
@@ -17,3 +17,5 @@ While exploring [Google Analytics](https://analytics.google.com/analytics/web/#/
 ### Audience Behaviour
 
 <iframe width="100%" height="900" src="https://datastudio.google.com/embed/reporting/e418a783-c4dc-4369-a487-09241fbaebf5/page/4VDGB" frameborder="0" style="border:0" allowfullscreen scrollling="no"></iframe>
+
+Do check these interesting analytics!!
