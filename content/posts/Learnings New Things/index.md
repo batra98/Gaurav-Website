@@ -1,0 +1,15 @@
+---
+title: Learning New Things
+description: Notes on Random Techinal Learnings.
+date: '2021-06-11'
+draft: false
+slug: '/pensieve/techinical-learning'
+tags:
+  - learning
+  - technical
+---
+
+Here are some notes that I made while learning new techinical things.
+
+- [Docker and Docker-Compose](https://www.notion.so/Docker-7723c133138245deb2462de8f0dc0017)
+- [Kubernetes](https://www.notion.so/Kubernetes-c5f6d9b4aa624c4a8c95b94debaa7f06)
