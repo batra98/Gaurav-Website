@@ -14,6 +14,15 @@ module.exports = {
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-robots-txt`,
     {
+      resolve: 'gatsby-plugin-crisp-chat',
+      options: {
+        websiteId: '4341474a-9c18-420a-a652-439ad426429f',
+        enableDuringDevelop: true, // Optional. Disables Crisp Chat during gatsby develop. Defaults to true.
+        defer: true, // Optional. Sets the Crisp loading script to defer instead of async. Defaults to false.
+        enableImprovedAccessibility: false, // Optional. Sets aria-label attribute on pop-up icon for screen readers. Defaults to true.
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: 'GauravBatra',
