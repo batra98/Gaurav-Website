@@ -13,3 +13,6 @@ Here are some notes that I made while learning new techinical things.
 
 - [Docker and Docker-Compose](https://www.notion.so/Docker-7723c133138245deb2462de8f0dc0017)
 - [Kubernetes](https://www.notion.so/Kubernetes-c5f6d9b4aa624c4a8c95b94debaa7f06)
+
+Some awesome blogs:
+- [Tiger Abrodi's Blog](https://tigerabrodi.hashnode.dev/)
