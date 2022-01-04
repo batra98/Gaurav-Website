@@ -16,4 +16,8 @@ Here are some notes that I made while learning new techinical things.
 - [Nginx](digitalocean.com/community/tutorials/understanding-nginx-server-and-location-block-selection-algorithms)
 
 Some awesome blogs:
+
 - [Tiger Abrodi's Blog](https://tigerabrodi.hashnode.dev/)
+- [Rubrik Interview Experience](https://abhinav-prakash.medium.com/rubrik-india-sde-2-interview-experience-72477c72ec8).
+- [Bo Quian's Cpp Playlist](https://www.youtube.com/watch?v=LL8wkskDlbs&list=PL5jc9xFGsL8E12so1wlMS0r0hTQoJL74M)
+- [Back to Basics: Cpp Concurrency](https://www.youtube.com/watch?v=riUCrKQ_ezc).
