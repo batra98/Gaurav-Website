@@ -198,3 +198,8 @@ This new year, I decided to record my interview prearation journey and hopefully
 
 * Started the [Back to Basics: Cpp Concurrency](https://www.youtube.com/watch?v=riUCrKQ_ezc).
 * I could not spend more time today, but will try to spend more time tommorrow.
+
+[05/01/2022 - 06/01/2022]
+
+- I have been chilling a lot. Haven't even completed the previous video.
+- Need to devote more time to this.
