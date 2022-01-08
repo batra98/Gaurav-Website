@@ -75,6 +75,7 @@ This new year, I decided to record my interview prearation journey and hopefully
       int count = 0;
       mutex mu;
       condition_variable c;
+  ```
 
 
       Foo() {
@@ -127,79 +128,216 @@ This new year, I decided to record my interview prearation journey and hopefully
           lck.unlock();
       }
 
-  };
+};
 
-  ```
+````
 
-  </details>
+</details>
 
 - [Print FooBar](https://leetcode.com/problems/print-foobar-alternately/): Synchronisation using [condition_variable](https://en.cppreference.com/w/cpp/thread/condition_variable) and [mutexes](https://en.cppreference.com/w/cpp/thread/unique_lock).
 
-  <details>
-      <summary>Cpp Implementation</summary>
+<details>
+    <summary>Cpp Implementation</summary>
 
-  ```cpp
+```cpp
 
-  class FooBar {
-  private:
-      int n;
+class FooBar {
+private:
+    int n;
 
-  public:
-      mutex mu;
-      condition_variable c;
-      bool is_foo = true;
-      FooBar(int n) {
-          this->n = n;
-      }
+public:
+    mutex mu;
+    condition_variable c;
+    bool is_foo = true;
+    FooBar(int n) {
+        this->n = n;
+    }
 
-      void foo(function<void()> printFoo) {
+    void foo(function<void()> printFoo) {
 
-          for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {
 
-              unique_lock lck(mu);
+            unique_lock lck(mu);
 
-              while(!is_foo)
-              {
-                  c.wait(lck);
-              }
-              is_foo = false;
-            // printFoo() outputs "foo". Do not change or remove this line.
-            printFoo();
+            while(!is_foo)
+            {
+                c.wait(lck);
+            }
+            is_foo = false;
+          // printFoo() outputs "foo". Do not change or remove this line.
+          printFoo();
 
-              lck.unlock();
-              c.notify_all();
-          }
-      }
+            lck.unlock();
+            c.notify_all();
+        }
+    }
 
-      void bar(function<void()> printBar) {
+    void bar(function<void()> printBar) {
 
-          for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {
 
-              unique_lock lck(mu);
+            unique_lock lck(mu);
 
-              while(is_foo)
-              {
-                  c.wait(lck);
-              }
-              is_foo = true;
-            // printBar() outputs "bar". Do not change or remove this line.
-            printBar();
-              lck.unlock();
-              c.notify_all();
+            while(is_foo)
+            {
+                c.wait(lck);
+            }
+            is_foo = true;
+          // printBar() outputs "bar". Do not change or remove this line.
+          printBar();
+            lck.unlock();
+            c.notify_all();
 
-          }
+        }
 
-      }
-  };
+    }
+};
 
-  ```
+````
 
   </details>
 
-* Started the [Back to Basics: Cpp Concurrency](https://www.youtube.com/watch?v=riUCrKQ_ezc).
-* I could not spend more time today, but will try to spend more time tommorrow.
+- Started the [Back to Basics: Cpp Concurrency](https://www.youtube.com/watch?v=riUCrKQ_ezc).
+- I could not spend more time today, but will try to spend more time tommorrow.
 
 [05/01/2022 - 06/01/2022]
 
 - I have been chilling a lot. Haven't even completed the previous video.
 - Need to devote more time to this.
+
+[07/01/2022-08/01/2022]
+
+- Completed the video series.
+- Solved a couple of problems on Leetcode and Lintcode. Some of them are as below:
+
+* [Building H20](https://leetcode.com/problems/building-h2o/)
+
+  <details>
+    <summary>Cpp Implementation</summary>
+
+  ```cpp
+
+    class H2O {
+    public:
+
+        mutex mu;
+
+        condition_variable c;
+        int num_hyd;
+        int num_oxy;
+        int count;
+
+        H2O() {
+            num_hyd = 0;
+            num_oxy = 0;
+
+        }
+
+        void hydrogen(function<void()> releaseHydrogen) {
+
+            unique_lock<mutex> lck(mu);
+
+            while(num_oxy*2 < num_hyd)
+            {
+                c.wait(lck);
+            }
+            // releaseHydrogen() outputs "H". Do not change or remove this line.
+            // cout << "H\n";
+
+            releaseHydrogen();
+            num_hyd++;
+
+            lck.unlock();
+            c.notify_all();
+        }
+
+        void oxygen(function<void()> releaseOxygen) {
+
+            unique_lock<mutex> lck(mu);
+
+            while(num_oxy*2 > num_hyd)
+            {
+                c.wait(lck);
+            }
+            // releaseOxygen() outputs "O". Do not change or remove this line.
+            // cout << "O\n";
+            releaseOxygen();
+            num_oxy++;
+
+            lck.unlock();
+            c.notify_all();
+        }
+    };
+
+  ```
+
+  </details>
+
+* [Dining Philosophers](https://leetcode.com/problems/the-dining-philosophers/)
+
+    <details>
+        <summary>Cpp Implementation</summary>
+    
+    ```cpp
+
+        class DiningPhilosophers {
+        public:
+
+
+            mutex mu;
+            condition_variable c;
+            vector<bool> fork;
+
+            DiningPhilosophers() {
+
+                for(int i=0;i<5;i++)
+                    fork.push_back(true);
+
+            }
+
+            void wantsToEat(int philosopher,
+                            function<void()> pickLeftFork,
+                            function<void()> pickRightFork,
+                            function<void()> eat,
+                            function<void()> putLeftFork,
+                            function<void()> putRightFork) {
+
+
+                {
+                    unique_lock lck(mu);
+
+                    while(fork[philosopher%5] == false && fork[(philosopher+1)%5] == false)
+                    {
+                        c.wait(lck);
+                    }
+
+                    fork[philosopher%5] = false;
+                    fork[(philosopher+1)%5] = false;
+
+
+                    pickLeftFork();
+                    pickRightFork();
+                    eat();
+                    putLeftFork();
+                    putRightFork();
+
+                    fork[philosopher%5] = true;
+                    fork[(philosopher+1)%5] = true;
+
+                    lck.unlock();
+                    c.notify_all();
+                }
+
+
+
+
+
+            }
+        };
+
+  ```
+  </details>
+  ```
+
+- Lintcode has a lot of interesting problems, will some more tommorrow.
+- Also, remember to give the OA for Schrodinger.
