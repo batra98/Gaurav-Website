@@ -41,159 +41,157 @@ This new year, I decided to record my interview prearation journey and hopefully
 
 * [Complement Base 10](https://leetcode.com/problems/complement-of-base-10-integer/): Bit Manuplation
 
-  <details>
+    <details>
     <summary>Cpp Implementation</summary>
 
-  ```cpp
+    ```cpp
 
-  class Solution {
-  public:
-      int bitwiseComplement(int n) {
+    class Solution {
+    public:
+        int bitwiseComplement(int n) {
 
-          int x = 1;
-          while(x<n)
-              x = x*2+1;
-          return x^n;
+            int x = 1;
+            while(x<n)
+                x = x*2+1;
+            return x^n;
 
-      }
-  };
+        }
+    };
 
-  ```
+    ```
 
-  </details>
+    </details>
 
 - [Print in order](https://leetcode.com/problems/print-in-order/): Synchronisation using [condition_variable](https://en.cppreference.com/w/cpp/thread/condition_variable) and [mutexes](https://en.cppreference.com/w/cpp/thread/unique_lock).
 
-  <details>
+    <details>
     <summary>Cpp Implementation</summary>
 
-  ```cpp
+    ```cpp
 
-  class Foo {
-  public:
+    class Foo {
+        public:
 
-      int count = 0;
-      mutex mu;
-      condition_variable c;
-  ```
-
-
-      Foo() {
-
-          count = 1;
-
-      }
-
-      void first(function<void()> printFirst) {
+            int count = 0;
+            mutex mu;
+            condition_variable c;
 
 
-          unique_lock lck(mu);
-          count++;
-          // printFirst() outputs "first". Do not change or remove this line.
-          printFirst();
+            Foo() {
 
-          lck.unlock();
-          c.notify_all();
-      }
+                count = 1;
 
-      void second(function<void()> printSecond) {
+            }
+
+            void first(function<void()> printFirst) {
 
 
-          unique_lock lck(mu);
-          while(count != 2)
-          {
-              c.wait(lck);
-          }
+                unique_lock lck(mu);
+                count++;
+                // printFirst() outputs "first". Do not change or remove this line.
+                printFirst();
 
-          count++;
-          // printSecond() outputs "second". Do not change or remove this line.
-          printSecond();
+                lck.unlock();
+                c.notify_all();
+            }
 
-
-          lck.unlock();
-          c.notify_all();
-      }
-
-      void third(function<void()> printThird) {
-
-          unique_lock lck(mu);
-          while(count != 3)
-          {
-              c.wait(lck);
-          }
+            void second(function<void()> printSecond) {
 
 
-          // printThird() outputs "third". Do not change or remove this line.
-          printThird();
-          lck.unlock();
-      }
+                unique_lock lck(mu);
+                while(count != 2)
+                {
+                    c.wait(lck);
+                }
 
-};
+                count++;
+                // printSecond() outputs "second". Do not change or remove this line.
+                printSecond();
 
-````
 
-</details>
+                lck.unlock();
+                c.notify_all();
+            }
+
+            void third(function<void()> printThird) {
+
+                unique_lock lck(mu);
+                while(count != 3)
+                {
+                    c.wait(lck);
+                }
+
+
+                // printThird() outputs "third". Do not change or remove this line.
+                printThird();
+                lck.unlock();
+            }
+
+        };
+
+    ```
+    </details>
 
 - [Print FooBar](https://leetcode.com/problems/print-foobar-alternately/): Synchronisation using [condition_variable](https://en.cppreference.com/w/cpp/thread/condition_variable) and [mutexes](https://en.cppreference.com/w/cpp/thread/unique_lock).
 
-<details>
-    <summary>Cpp Implementation</summary>
+    <details>
+        <summary>Cpp Implementation</summary>
 
-```cpp
+    ```cpp
 
-class FooBar {
-private:
-    int n;
+    class FooBar {
+    private:
+        int n;
 
-public:
-    mutex mu;
-    condition_variable c;
-    bool is_foo = true;
-    FooBar(int n) {
-        this->n = n;
-    }
-
-    void foo(function<void()> printFoo) {
-
-        for (int i = 0; i < n; i++) {
-
-            unique_lock lck(mu);
-
-            while(!is_foo)
-            {
-                c.wait(lck);
-            }
-            is_foo = false;
-          // printFoo() outputs "foo". Do not change or remove this line.
-          printFoo();
-
-            lck.unlock();
-            c.notify_all();
-        }
-    }
-
-    void bar(function<void()> printBar) {
-
-        for (int i = 0; i < n; i++) {
-
-            unique_lock lck(mu);
-
-            while(is_foo)
-            {
-                c.wait(lck);
-            }
-            is_foo = true;
-          // printBar() outputs "bar". Do not change or remove this line.
-          printBar();
-            lck.unlock();
-            c.notify_all();
-
+    public:
+        mutex mu;
+        condition_variable c;
+        bool is_foo = true;
+        FooBar(int n) {
+            this->n = n;
         }
 
-    }
-};
+        void foo(function<void()> printFoo) {
 
-````
+            for (int i = 0; i < n; i++) {
+
+                unique_lock lck(mu);
+
+                while(!is_foo)
+                {
+                    c.wait(lck);
+                }
+                is_foo = false;
+            // printFoo() outputs "foo". Do not change or remove this line.
+            printFoo();
+
+                lck.unlock();
+                c.notify_all();
+            }
+        }
+
+        void bar(function<void()> printBar) {
+
+            for (int i = 0; i < n; i++) {
+
+                unique_lock lck(mu);
+
+                while(is_foo)
+                {
+                    c.wait(lck);
+                }
+                is_foo = true;
+            // printBar() outputs "bar". Do not change or remove this line.
+            printBar();
+                lck.unlock();
+                c.notify_all();
+
+            }
+
+        }
+    };
+
+    ```
 
   </details>
 
@@ -337,7 +335,14 @@ public:
 
   ```
   </details>
-  ```
+  
 
 - Lintcode has a lot of interesting problems, will some more tommorrow.
 - Also, remember to give the OA for Schrodinger.
+
+[10/01/2022]
+- The interview went good. The interviewer was a nice person. Enjoyed the interview a lot.
+
+[11/01/2022]
+- Got a mail for a second round of interviews 🎉🎉🎉.
+- Will start a new thread on that soon. 
