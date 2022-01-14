@@ -526,7 +526,6 @@ This new year, I decided to record my interview prearation journey and hopefully
 
 
 
-
 </details>
 
 ## Amazon Interview

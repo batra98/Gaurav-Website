@@ -6,7 +6,7 @@ module.exports = {
     'Gaurav Batra, Gaurav, Batra, suzaku_kuru, Suzaku_kuru, machine learning, Reinforcement Learning, Software Engineer',
   siteUrl: 'https://gauravbatra.netlify.app/',
   siteLanguage: 'en_US',
-  googleAnalyticsID: 'UA-174145610-2',
+  googleAnalyticsID: 'G-74KX2392ZV',
   // googleVerification: 'DCl7VAf9tcz6eD9gb67NfkNnJ1PKRNcg8qQiwpbx9Lk',
   name: 'Gaurav Batra',
   location: 'Hyderabad, India',
