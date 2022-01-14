@@ -14,6 +14,9 @@ This new year, I decided to record my interview prearation journey and hopefully
 
 ### System Coding Round (Date - 10/01/2022)
 
+<details>
+<summary><b>System Coding Round Prepartation Journey</b></summary>
+
 - This round will mainly focus on concurrency and multithreading concepts.
 - I have negligible knowledge on these topics. But, I like the challenge
 - I have exactly 1 week for preparations, so let's try to make the most of it.
@@ -195,6 +198,7 @@ This new year, I decided to record my interview prearation journey and hopefully
 
   </details>
 
+
 - Started the [Back to Basics: Cpp Concurrency](https://www.youtube.com/watch?v=riUCrKQ_ezc).
 - I could not spend more time today, but will try to spend more time tommorrow.
 
@@ -346,3 +350,31 @@ This new year, I decided to record my interview prearation journey and hopefully
 [11/01/2022]
 - Got a mail for a second round of interviews 🎉🎉🎉.
 - Will start a new thread on that soon. 
+
+</details>
+
+
+### System Coding Round - II (Date - 19/01/2022)
+
+<details>
+<summary><b> System Coding Round - II Preparation Journey </b></summary>
+
+- This round will be similar to the last round.
+- Focus will be on multi-threading and concurrency.
+- Need to brush up my skills more and gain more confidence on concepts.
+
+[12/01/2022 - 13/01/2022]
+- I did not do much as far as preparation is concerned, maybe I am too lazy 😂.
+- But, Now I have a long weekend coming. Will make the most out of it.
+
+
+
+
+
+
+
+
+
+
+
+</details>
