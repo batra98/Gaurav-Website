@@ -378,3 +378,18 @@ This new year, I decided to record my interview prearation journey and hopefully
 
 
 </details>
+
+## Amazon Interview
+
+### Behavioural Interview Round [17/01/2022]
+<details>
+<summary> Behavioural Interview Round </summary>
+
+- Got an OA from Amazon which was quite easy.
+- Received an invite for Behavioural Interview.
+- Planning to look at the links provided and some online stuff.
+
+
+
+
+</details>
