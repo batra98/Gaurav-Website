@@ -351,6 +351,11 @@ This new year, I decided to record my interview prearation journey and hopefully
 - Got a mail for a second round of interviews 🎉🎉🎉.
 - Will start a new thread on that soon. 
 
+<p align="center">
+<img src="party.gif"/>
+</p>
+
+
 </details>
 
 
@@ -367,6 +372,139 @@ This new year, I decided to record my interview prearation journey and hopefully
 - I did not do much as far as preparation is concerned, maybe I am too lazy 😂.
 - But, Now I have a long weekend coming. Will make the most out of it.
 
+[14/01/2022 - 16/01/2022]
+- Watched the video series to refresh topics: [Multi-threading in C++](https://www.youtube.com/watch?v=eeSC43KQdVI&list=PL_dsdStdDXbrzGQUMh2sy6T8GcCCst3Nm)
+- Solved a couple of good problems on Lintcode. Some of the good ones are:
+    - [n threads print 1-m](https://www.lintcode.com/problem/2438/). 
+    <details>
+    <summary><b>Code Implementation</b></summary>
+
+    ```cpp
+    
+    #include <iostream>
+    #include <thread>
+    #include <mutex>
+    #include <condition_variable>
+
+    using namespace std;
+
+    class Solution {
+    private:
+        int n;
+        int m;
+        
+
+    public:
+        mutex mu;
+        condition_variable c;
+
+        int count;
+        Solution(int n, int m) {
+            this->n = n;
+            this->m = m;
+            
+
+            
+
+            count = 0;
+            // write your code
+            
+        }
+
+        
+
+
+        void printThreadNumber(void printNumber(int x, int id), int thread_id) {
+            // write your code
+            
+            int extra=0;
+            
+            if(thread_id<m%n)
+                extra++;
+
+            for(int i=0;i<m/n+extra;i++)
+            {
+                unique_lock<mutex> lck(mu);
+
+                while(count%n != thread_id)
+                {
+                    c.wait(lck);
+                }
+                // cout << count << '\n';
+                printNumber(count+1,thread_id);
+                count++;
+                
+                
+
+                lck.unlock();
+                c.notify_all();
+
+                // num--;
+
+
+            }
+
+        }
+    };
+
+
+
+    ```
+
+
+    </details>
+
+    - [Sleep Sort](https://www.lintcode.com/problem/2449/)
+    <details>
+    <summary><b>Code Implementation</b></summary>
+
+    ```cpp
+    #include <iostream>
+    #include <thread>
+    #include <vector>
+    #include <chrono>
+    using namespace std;
+
+    class Solution {
+    public:
+        void print_after_delay(void printNumber(double),double x)
+        {
+            int t = x*1000;
+            std::this_thread::sleep_for(std::chrono::milliseconds(t));
+            printNumber(x);
+            
+        }
+
+        void sleepSort(int n, vector<double> nums, void printNumber(double)){
+            // write your code
+            vector<thread*> threads;
+            for(int i=0;i<n;i++)
+            {
+                threads.push_back(new thread(&Solution::print_after_delay,this,printNumber,nums[i]));
+            }
+
+            for (int i = 0; i < n; i++) {
+                threads[i]->join();
+                delete threads[i];
+            }   
+
+
+
+
+        }
+    };
+
+
+
+
+    ```
+
+
+
+
+
+    </details>
+
 
 
 
@@ -381,14 +519,26 @@ This new year, I decided to record my interview prearation journey and hopefully
 
 ## Amazon Interview
 
-### Behavioural Interview Round [17/01/2022]
+### ~~Behavioural Interview Round~~ Technical Round [17/01/2022]
 <details>
-<summary> Behavioural Interview Round </summary>
+<summary><b>Behavioural Interview Round</b></summary>
 
 - Got an OA from Amazon which was quite easy.
 - Received an invite for Behavioural Interview.
 - Planning to look at the links provided and some online stuff.
 
+[17/01/2022]
+- The interview turned out to be a technical interview 🥲.
+- Two questions were asked.
+- Was able to code the first one with the most optimal solution that they desired.
+- In the second question, was not able to acheive the optimal time complexity which they wanted.
+- Will now discuss the questions, my solutions and optimal solutions because:
+
+<!-- ![Learn From Mistakes](Learn_from_Mistakes.jpeg) -->
+
+<p align="center">
+<img src="Learn_from_Mistakes.jpeg" />
+</p>
 
 
 
