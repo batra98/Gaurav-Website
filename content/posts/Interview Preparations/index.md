@@ -351,10 +351,8 @@ This new year, I decided to record my interview prearation journey and hopefully
 - Got a mail for a second round of interviews 🎉🎉🎉.
 - Will start a new thread on that soon. 
 
-<p align="center">
-<img src="https://thumbs.gfycat.com/OrangeWelcomeCentipede-size_restricted.gif"/>
-</p>
 
+![party](https://thumbs.gfycat.com/OrangeWelcomeCentipede-size_restricted.gif)
 
 
 
