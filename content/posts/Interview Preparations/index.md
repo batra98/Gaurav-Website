@@ -47,21 +47,21 @@ This new year, I decided to record my interview prearation journey and hopefully
     <details>
     <summary>Cpp Implementation</summary>
 
-    ```cpp
+  ```cpp
 
-    class Solution {
-    public:
-        int bitwiseComplement(int n) {
+  class Solution {
+  public:
+      int bitwiseComplement(int n) {
 
-            int x = 1;
-            while(x<n)
-                x = x*2+1;
-            return x^n;
+          int x = 1;
+          while(x<n)
+              x = x*2+1;
+          return x^n;
 
-        }
-    };
+      }
+  };
 
-    ```
+  ```
 
     </details>
 
@@ -70,14 +70,15 @@ This new year, I decided to record my interview prearation journey and hopefully
     <details>
     <summary>Cpp Implementation</summary>
 
-    ```cpp
+  ```cpp
 
-    class Foo {
-        public:
+  class Foo {
+      public:
 
-            int count = 0;
-            mutex mu;
-            condition_variable c;
+          int count = 0;
+          mutex mu;
+          condition_variable c;
+  ```
 
 
             Foo() {
@@ -140,67 +141,66 @@ This new year, I decided to record my interview prearation journey and hopefully
     <details>
         <summary>Cpp Implementation</summary>
 
-    ```cpp
+  ```cpp
 
-    class FooBar {
-    private:
-        int n;
+  class FooBar {
+  private:
+      int n;
 
-    public:
-        mutex mu;
-        condition_variable c;
-        bool is_foo = true;
-        FooBar(int n) {
-            this->n = n;
-        }
+  public:
+      mutex mu;
+      condition_variable c;
+      bool is_foo = true;
+      FooBar(int n) {
+          this->n = n;
+      }
 
-        void foo(function<void()> printFoo) {
+      void foo(function<void()> printFoo) {
 
-            for (int i = 0; i < n; i++) {
+          for (int i = 0; i < n; i++) {
 
-                unique_lock lck(mu);
+              unique_lock lck(mu);
 
-                while(!is_foo)
-                {
-                    c.wait(lck);
-                }
-                is_foo = false;
-            // printFoo() outputs "foo". Do not change or remove this line.
-            printFoo();
+              while(!is_foo)
+              {
+                  c.wait(lck);
+              }
+              is_foo = false;
+          // printFoo() outputs "foo". Do not change or remove this line.
+          printFoo();
 
-                lck.unlock();
-                c.notify_all();
-            }
-        }
+              lck.unlock();
+              c.notify_all();
+          }
+      }
 
-        void bar(function<void()> printBar) {
+      void bar(function<void()> printBar) {
 
-            for (int i = 0; i < n; i++) {
+          for (int i = 0; i < n; i++) {
 
-                unique_lock lck(mu);
+              unique_lock lck(mu);
 
-                while(is_foo)
-                {
-                    c.wait(lck);
-                }
-                is_foo = true;
-            // printBar() outputs "bar". Do not change or remove this line.
-            printBar();
-                lck.unlock();
-                c.notify_all();
+              while(is_foo)
+              {
+                  c.wait(lck);
+              }
+              is_foo = true;
+          // printBar() outputs "bar". Do not change or remove this line.
+          printBar();
+              lck.unlock();
+              c.notify_all();
 
-            }
+          }
 
-        }
-    };
+      }
+  };
 
-    ```
+  ```
 
   </details>
 
-
-- Started the [Back to Basics: Cpp Concurrency](https://www.youtube.com/watch?v=riUCrKQ_ezc).
-- I could not spend more time today, but will try to spend more time tommorrow.
+* Started the [Back to Basics: Cpp Concurrency](https://www.youtube.com/watch?v=riUCrKQ_ezc).
+* I could not spend more time today, but will try to spend more time tommorrow.
 
 [05/01/2022 - 06/01/2022]
 
@@ -337,9 +337,9 @@ This new year, I decided to record my interview prearation journey and hopefully
             }
         };
 
-  ```
-  </details>
-  
+````
+</details>
+
 
 - Lintcode has a lot of interesting problems, will some more tommorrow.
 - Also, remember to give the OA for Schrodinger.
@@ -349,7 +349,7 @@ This new year, I decided to record my interview prearation journey and hopefully
 
 [11/01/2022]
 - Got a mail for a second round of interviews 🎉🎉🎉.
-- Will start a new thread on that soon. 
+- Will start a new thread on that soon.
 
 
 ![party](https://thumbs.gfycat.com/OrangeWelcomeCentipede-size_restricted.gif)
@@ -376,137 +376,141 @@ This new year, I decided to record my interview prearation journey and hopefully
 [14/01/2022 - 16/01/2022]
 - Watched the video series to refresh topics: [Multi-threading in C++](https://www.youtube.com/watch?v=eeSC43KQdVI&list=PL_dsdStdDXbrzGQUMh2sy6T8GcCCst3Nm)
 - Solved a couple of good problems on Lintcode. Some of the good ones are:
-    - [n threads print 1-m](https://www.lintcode.com/problem/2438/). 
-        <details>
-        <summary><b>Code Implementation</b></summary>
+  - [n threads print 1-m](https://www.lintcode.com/problem/2438/).
+      <details>
+      <summary><b>Code Implementation</b></summary>
 
-        ```cpp
-        
-            #include <iostream>
-            #include <thread>
-            #include <mutex>
-            #include <condition_variable>
+      ```cpp
 
-            using namespace std;
+          #include <iostream>
+          #include <thread>
+          #include <mutex>
+          #include <condition_variable>
 
-            class Solution {
-            private:
-                int n;
-                int m;
-                
+          using namespace std;
 
-            public:
-                mutex mu;
-                condition_variable c;
-
-                int count;
-                Solution(int n, int m) {
-                    this->n = n;
-                    this->m = m;
-                    
-
-                    
-
-                    count = 0;
-                    // write your code
-                    
-                }
-
-                
+          class Solution {
+          private:
+              int n;
+              int m;
 
 
-                void printThreadNumber(void printNumber(int x, int id), int thread_id) {
-                    // write your code
-                    
-                    int extra=0;
-                    
-                    if(thread_id<m%n)
-                        extra++;
+          public:
+              mutex mu;
+              condition_variable c;
 
-                    for(int i=0;i<m/n+extra;i++)
-                    {
-                        unique_lock<mutex> lck(mu);
-
-                        while(count%n != thread_id)
-                        {
-                            c.wait(lck);
-                        }
-                        // cout << count << '\n';
-                        printNumber(count+1,thread_id);
-                        count++;
-                        
-                        
-
-                        lck.unlock();
-                        c.notify_all();
-
-                        // num--;
-
-
-                    }
-
-                }
-            };
-
-
-
-        ```
-
-
-        </details>
-
-    - [Sleep Sort](https://www.lintcode.com/problem/2449/)
-    
-        <details>
-        <summary><b>Code Implementation</b></summary>
-
-        ```cpp
-
-            #include <iostream>
-            #include <thread>
-            #include <vector>
-            #include <chrono>
-            using namespace std;
-
-            class Solution {
-            public:
-                void print_after_delay(void printNumber(double),double x)
-                {
-                    int t = x*1000;
-                    std::this_thread::sleep_for(std::chrono::milliseconds(t));
-                    printNumber(x);
-                    
-                }
-
-                void sleepSort(int n, vector<double> nums, void printNumber(double)){
-                    // write your code
-                    vector<thread*> threads;
-                    for(int i=0;i<n;i++)
-                    {
-                        threads.push_back(new thread(&Solution::print_after_delay,this,printNumber,nums[i]));
-                    }
-
-                    for (int i = 0; i < n; i++) {
-                        threads[i]->join();
-                        delete threads[i];
-                    }   
+              int count;
+              Solution(int n, int m) {
+                  this->n = n;
+                  this->m = m;
 
 
 
 
-                }
-            };
+                  count = 0;
+                  // write your code
+
+              }
 
 
 
 
-        ```
+              void printThreadNumber(void printNumber(int x, int id), int thread_id) {
+                  // write your code
+
+                  int extra=0;
+
+                  if(thread_id<m%n)
+                      extra++;
+
+                  for(int i=0;i<m/n+extra;i++)
+                  {
+                      unique_lock<mutex> lck(mu);
+
+                      while(count%n != thread_id)
+                      {
+                          c.wait(lck);
+                      }
+                      // cout << count << '\n';
+                      printNumber(count+1,thread_id);
+                      count++;
+
+
+
+                      lck.unlock();
+                      c.notify_all();
+
+                      // num--;
+
+
+                  }
+
+              }
+          };
+
+
+
+      ```
+
+
+      </details>
+
+  - [Sleep Sort](https://www.lintcode.com/problem/2449/)
+
+      <details>
+      <summary><b>Code Implementation</b></summary>
+
+      ```cpp
+
+          #include <iostream>
+          #include <thread>
+          #include <vector>
+          #include <chrono>
+          using namespace std;
+
+          class Solution {
+          public:
+              void print_after_delay(void printNumber(double),double x)
+              {
+                  int t = x*1000;
+                  std::this_thread::sleep_for(std::chrono::milliseconds(t));
+                  printNumber(x);
+
+              }
+
+              void sleepSort(int n, vector<double> nums, void printNumber(double)){
+                  // write your code
+                  vector<thread*> threads;
+                  for(int i=0;i<n;i++)
+                  {
+                      threads.push_back(new thread(&Solution::print_after_delay,this,printNumber,nums[i]));
+                  }
+
+                  for (int i = 0; i < n; i++) {
+                      threads[i]->join();
+                      delete threads[i];
+                  }
+
+
+
+
+              }
+          };
+
+
+
+
+      ```
 
 
 
 
 
-        </details>
+      </details>
+
+[19/01/2022 - 22/01/2022]
+- The interview went pretty well, better than the first one. Was able to solve the problem and wrote a clean code.
+- Recruiter is taking time to update my status. Asked me to wait.
 
 
 
@@ -543,6 +547,32 @@ This new year, I decided to record my interview prearation journey and hopefully
 <img src="Learn_from_Mistakes.jpeg" />
 </p>
 
+[20/01/2022]
+- Rejection mail arrived today. Not surprised.
+
+
 
 
 </details>
+
+
+## Shopee
+
+### Online Assessment + HR Phone Screen [28/01/2022]
+<details>
+<summary><b> Online Assessment + HR Phone Screen </b></summary>
+
+- Applied to Shopee Singapore for an ML role. Recruiter reverted with an email stating that this role has a long waiting list and instead shared a list of Backend Engineering Roles for my consideration.
+- Gave an online assessment which was easy.
+- Had a intial phone screen round with the HR. Questions were mainly focused around my past and present work, and expectations.
+
+
+
+
+</details>
+
+
+## Company Status
+
+<iframe class="airtable-embed" src="https://airtable.com/embed/shrOoN8z4kNdg2239?backgroundColor=red&layout=card" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe>
+````
