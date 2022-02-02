@@ -337,8 +337,8 @@ This new year, I decided to record my interview prearation journey and hopefully
             }
         };
 
-````
-</details>
+    ```
+    </details>
 
 
 - Lintcode has a lot of interesting problems, will some more tommorrow.
@@ -512,6 +512,11 @@ This new year, I decided to record my interview prearation journey and hopefully
 - The interview went pretty well, better than the first one. Was able to solve the problem and wrote a clean code.
 - Recruiter is taking time to update my status. Asked me to wait.
 
+[01/02/2022]
+- Wrote a email again today, still waiting for any response.
+- Most likely I have been rejected. It was a good experience anyways.
+- Will wait for a formal email before updating the table.
+
 
 
 
@@ -566,7 +571,15 @@ This new year, I decided to record my interview prearation journey and hopefully
 - Gave an online assessment which was easy.
 - Had a intial phone screen round with the HR. Questions were mainly focused around my past and present work, and expectations.
 
+</details>
 
+
+### Technical Interview - I [03/02/2022]
+<details>
+<summary><b> Technical Interview - I </b></summary>
+
+- Have been doing coding questions regulary topic-wise from Striver's list.
+- Also, refreshed my network concepts along with that as this interview will also include theoretical questions.
 
 
 </details>
