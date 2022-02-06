@@ -581,8 +581,48 @@ This new year, I decided to record my interview prearation journey and hopefully
 - Have been doing coding questions regulary topic-wise from Striver's list.
 - Also, refreshed my network concepts along with that as this interview will also include theoretical questions.
 
+[04/02/2022]
+- Absolutely killed the interview. Strangled it with my bare hands ☹️.
+- The question was of wildcard matching (DP very similar to Edit Distance).
+- Tried giving a greedy solution, failed miserable.
+- 90 mins of absolute embarassesment. 
+- Working on DP since then, to atone for my sins.
+
+<iframe src="https://giphy.com/embed/3orieP83jvphEiTgeQ" width="480" height="362" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/season-16-the-simpsons-16x4-3orieP83jvphEiTgeQ">via GIPHY</a></p>
+
+
 
 </details>
+
+## Twilio
+
+### Online Assessment [04/02/2022]
+<details>
+<summary><b> Online Assessment </b></summary>
+
+- Randomly applied to Twilio one day. Got an online assessment for a devops role.
+- Very unique hackerrank assessment. Enjoyed it a lot. One easy coding question + 2 questions on terraform.
+- It required me to ssh into a server and write code (hcl code to concerning varibles and docker containers).
+- Got a call from HR that I passed and would have a introductory meet with Hiring manager about company values.
+
+</details>
+
+## Microsoft
+
+### Online Assessment [05/02/2022]
+<details>
+<summary><b> Online Assessment </b></summary>
+
+- Got a codility test link (55 mins, 2 questions) to be completed before 6th Feb, 2022.
+- Test went horrible. Could only solve 1/2. No hope of being selected.
+
+<iframe src="https://giphy.com/embed/4PUjcUBXIzQYfI8iVa" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/queen-live-another-one-bites-the-dust-4PUjcUBXIzQYfI8iVa">via GIPHY</a></p>
+
+- Don't know when will I learn 😢.
+
+</details>
+
+
 
 
 ## Company Status
