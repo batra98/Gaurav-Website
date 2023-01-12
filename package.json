@@ -52,7 +52,7 @@
     "gatsby-remark-images": "^5.0.0",
     "gatsby-remark-prismjs": "^3.3.25",
     "gatsby-source-filesystem": "^2.1.40",
-    "gatsby-transformer-remark": "^4.0.0",
+    "gatsby-transformer-remark": "^5.25.1",
     "gatsby-transformer-sharp": "^2.3.7",
     "hyvor-talk-react": "^1.0.2",
     "lodash": "^4.17.21",
