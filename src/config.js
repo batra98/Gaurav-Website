@@ -20,7 +20,7 @@ module.exports = {
     },
     {
       name: 'Second 🧠',
-      url: 'https://admirable-taffy-5f9a9a.netlify.app/',
+      url: 'https://gaurav-second-brain.netlify.app/',
     },
     {
       name: 'Linkedin',
