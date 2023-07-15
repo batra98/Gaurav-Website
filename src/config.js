@@ -19,9 +19,14 @@ module.exports = {
       url: 'https://github.com/batra98',
     },
     {
+      name: 'Second 🧠',
+      url: 'https://admirable-taffy-5f9a9a.netlify.app/',
+    },
+    {
       name: 'Linkedin',
       url: 'https://www.linkedin.com/in/gaurav-batra-363084176/',
     },
+
     // {
     //   name: 'Codepen',
     //   url: 'https://codepen.io/bchiang7',
@@ -30,6 +35,7 @@ module.exports = {
       name: 'Instagram',
       url: 'https://www.instagram.com/batra.gaurav2616/',
     },
+
     // {
     //   name: 'Facebook',
     //   url: 'https://twitter.com/bchiang7',
