@@ -17,6 +17,7 @@ import {
   IconTwitter,
   IconZap,
 } from '@components/icons';
+import IconBrain from './brain';
 
 const FormattedIcon = ({ name }) => {
   switch (name) {
@@ -50,6 +51,8 @@ const FormattedIcon = ({ name }) => {
       return <IconTwitter />;
     case 'Zap':
       return <IconZap />;
+    case 'Second 🧠':
+      return <IconBrain />;
     default:
       return <IconExternal />;
   }
