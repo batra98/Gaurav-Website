@@ -159,5 +159,21 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: "gatsby-plugin-ackee-tracker",
+      options: {
+        // Domatin ID found when adding a domain in the admin panel.
+        domainId: "687c9ac8-d1ac-40f9-90af-02eab0a3f4d7",
+        // URL to Server eg: "https://analytics.test.com".
+        server: "https://personal-website-ackee-analytics.netlify.app",
+        // Disabled analytic tracking when running localy
+        ignoreLocalhost: true,
+        // Enable or disable the tracking of your own visits (as identified by your login to the Ackee dashboard).
+        ignoreOwnVisits: false,
+        // If enabled it will collect info on OS, BrowserInfo, Device  & ScreenSize
+        detailed: false,
+      },
+    },
   ],
 };
+
