@@ -9,6 +9,6 @@ url: 'https://www.nvidia.com/en-in/'
 
 - I worked at Nvidia, as a **Software Intern in the Cloud gaming (GeForce) Team**.
 - My work revolved around **designing a Convolutional Neural Network that can prefilter images as a pre-processing step before compression**.
-- This Network can be used to preprocess video frames before encoding to reduce the bits-per-pixel required.
 - This CNN will ultimately be used as a pre-processing step in the Nvidia Ge-force Network.
+- Achieved a **15% improvement in PSNR scores and a 10% increase in SSIM metrics**, outperforming traditional JPEG methods. Reduced bits-per-pixel for video encoding, ensuring consistent frame rates even under limited bandwidth conditions.
 - Tech Involved: Tensorflow, Pytorch.
