@@ -2,20 +2,18 @@
 title: 'About Me'
 avatar: './me.jpg'
 skills:
-  - Python
-  - C, Cpp
-  - Tensorflow
-  - Bash
-  - Latex
-  - OpenGL
+  - Python, C++, and Go
+  - Machine learning frameworks (PyTorch, TensorFlow)
+  - Kubernetes, Docker
+  - Cloud infrastructure (AWS, GCP)
 ---
 
-Hello! I'm Gaurav, a final year undergraduate at [IIIT, Hyderabad](https://www.iiit.ac.in/).
+Hello! I'm Gaurav, a Master’s student in Computer Science at [UW-Madison](https://www.cs.wisc.edu/), specializing in backend engineering, distributed systems, and machine learning.
 
-I enjoy learning new things and currently exploring the field of Machine Learning. Apart from this, I like playing games ranging from strategy based games like [Age Of Empires](https://www.ageofempires.com/) to action-adventure games like [Assasin's Creed](https://www.ubisoft.com/en-us/game/assassins-creed).
+I bring over 3.5 years of professional experience, including impactful roles at [Couture.ai](https://www.couture.ai/) and [NVIDIA](https://www.nvidia.com/en-in/).
 
-In the summer of 2020, I joined the Software Engineering (Cloud) team at [NVIDIA](https://www.nvidia.com/en-in/) as a Software Intern.
+I have also worked as a undergraduate researcher at the [Machine Learning Lab](https://mll.iiit.ac.in/) advised by [Prof. Naresh Manwani](https://www.iiit.ac.in/people/faculty/naresh.manwani/), where I work on algorithms in the Multi-Arm Bandit Setting.
 
-My work as an intern included designing a Convolutional Neural Network that can prefilter images/video frames as a pre-processing step before compression.
+Beyond my academic and professional pursuits, I’m passionate about gaming. My favorites range from strategy classics like [Age Of Empires](https://www.ageofempires.com/) to action-adventure titles like [Assassin's Creed](https://www.ubisoft.com/en-us/game/assassins-creed).
 
 Here are a few technologies I've been working with recently:
