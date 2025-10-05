@@ -3,12 +3,13 @@
   publish = "public"
 
 [build.environment]
-  NODE_VERSION = "18.20.5"
   SHARP_IGNORE_GLOBAL_LIBVIPS = "1"
   NPM_FLAGS = "--legacy-peer-deps"
 
-[[plugins]]
-  package = "@netlify/plugin-lighthouse"
+# Lighthouse plugin removed due to Node.js 22 incompatibility
+# Can be re-enabled when plugin supports Node 20+
+# [[plugins]]
+#   package = "@netlify/plugin-lighthouse"
 
 # Headers for better performance
 [[headers]]
