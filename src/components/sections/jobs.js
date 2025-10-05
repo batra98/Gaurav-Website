@@ -170,15 +170,17 @@ const StyledJobTitle = styled.h4`
   }
 `;
 const StyledCompany = styled.span`
-  background: ${colors.gradient};
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: ${colors.green};
   font-weight: 600;
   transition: all 0.3s ease;
   
-  a:hover & {
-    filter: brightness(1.2);
+  a {
+    color: ${colors.green};
+    text-decoration: none;
+    
+    &:hover {
+      color: ${colors.purple};
+    }
   }
 `;
 const StyledJobDetails = styled.h5`
