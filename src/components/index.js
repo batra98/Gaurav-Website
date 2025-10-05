@@ -10,7 +10,6 @@ export { default as Footer } from './footer';
 export { default as ScrollProgress } from './scrollProgress';
 export { default as CursorFollower } from './cursorFollower';
 export { default as CommandPalette } from './commandPalette';
-export { default as ThemeToggle } from './themeToggle';
 export { default as Hero } from './sections/hero';
 export { default as About } from './sections/about';
 export { default as Jobs } from './sections/jobs';

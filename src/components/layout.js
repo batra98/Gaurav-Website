@@ -95,7 +95,6 @@ const Layout = ({ children, location }) => {
               <CommandPalette />
               <CursorFollower />
               <ScrollProgress />
-              <ThemeToggle />
               <Nav isHome={isHome} />
               <Social isHome={isHome} />
               <Email isHome={isHome} />
