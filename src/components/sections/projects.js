@@ -44,16 +44,31 @@ const StyledGrid = styled.div`
   }
 `;
 const StyledProjectInner = styled.div`
-  ${mixins.boxShadow};
   ${mixins.flexBetween};
   flex-direction: column;
   align-items: flex-start;
   position: relative;
   padding: 2rem 1.75rem;
   height: 100%;
-  border-radius: ${theme.borderRadius};
-  transition: ${theme.transition};
-  background-color: ${colors.lightNavy};
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  
+  /* Glassmorphism effect */
+  background: linear-gradient(
+    135deg,
+    ${colors.lightNavy}90 0%,
+    ${colors.lightNavy}60 100%
+  );
+  backdrop-filter: blur(10px);
+  border: 1px solid ${colors.lightestNavy}30;
+  box-shadow: 0 8px 32px 0 ${colors.shadowNavy};
+  
+  &:hover {
+    transform: translateY(-8px);
+    border-color: ${colors.green}50;
+    box-shadow: 0 16px 48px 0 ${colors.green}20,
+                0 0 0 1px ${colors.green}20;
+  }
 `;
 const StyledProject = styled.div`
   transition: ${theme.transition};
@@ -72,9 +87,16 @@ const StyledProjectHeader = styled.div`
 `;
 const StyledFolder = styled.div`
   color: ${colors.green};
+  transition: all 0.3s ease;
   svg {
     width: 40px;
     height: 40px;
+    filter: drop-shadow(0 0 10px ${colors.green}40);
+  }
+  
+  ${StyledProject}:hover & {
+    transform: scale(1.1) rotate(-10deg);
+    filter: drop-shadow(0 0 20px ${colors.green}60);
   }
 `;
 const StyledProjectLinks = styled.div`

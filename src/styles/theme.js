@@ -1,22 +1,30 @@
 import { hex2rgba } from '@utils';
 
-const ACCENT = '#7AB547';
-const DARK_BG = '#222629';
-const BG = '#222629';
+// Modern color palette with vibrant gradients
+const ACCENT = '#00D9FF'; // Bright cyan
+const ACCENT_SECONDARY = '#7C3AED'; // Purple
+const DARK_BG = '#0A0E27';
+const BG = '#0F1729';
 
 const theme = {
   colors: {
     darkNavy: DARK_BG,
     navy: BG,
-    lightNavy: '#1A1918',
-    lightestNavy: '#303C55',
-    slate: '#8892b0',
-    lightSlate: '#a8b2d1',
-    lightestSlate: '#ccd6f6',
-    white: '#6B6E70',
+    lightNavy: '#1A1F3A',
+    lightestNavy: '#2D3B5E',
+    slate: '#94A3B8',
+    lightSlate: '#C7D2E8',
+    lightestSlate: '#E2E8F0',
+    white: '#F8FAFC',
     green: ACCENT,
+    purple: ACCENT_SECONDARY,
     transGreen: hex2rgba(ACCENT, 0.07),
     shadowNavy: hex2rgba(DARK_BG, 0.7),
+    // Gradient colors for modern effects
+    gradientStart: ACCENT,
+    gradientEnd: ACCENT_SECONDARY,
+    gradient: `linear-gradient(135deg, ${ACCENT} 0%, ${ACCENT_SECONDARY} 100%)`,
+    gradientHover: `linear-gradient(135deg, ${ACCENT_SECONDARY} 0%, ${ACCENT} 100%)`,
   },
 
   fonts: {

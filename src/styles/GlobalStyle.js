@@ -33,7 +33,9 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1.3;
     font-family: ${fonts.Calibre};
     font-size: ${fontSizes.xl};
+    cursor: none;
     ${media.phablet`font-size: ${fontSizes.lg};`}
+    ${media.tablet`cursor: auto;`}
 
     &.hidden {
       overflow: hidden;
@@ -47,11 +49,20 @@ const GlobalStyle = createGlobalStyle`
         user-select: none;
       }
     }
+    
+    /* Smooth scrolling for better UX */
+    scroll-behavior: smooth;
   }
 
   ::selection {
-    background-color: ${colors.slate};
-    color: ${colors.lightestSlate};
+    background: ${colors.gradient};
+    color: ${colors.navy};
+    -webkit-text-fill-color: ${colors.navy};
+  }
+  
+  ::-moz-selection {
+    background: ${colors.gradient};
+    color: ${colors.navy};
   }
 
   #root {
@@ -116,12 +127,17 @@ const GlobalStyle = createGlobalStyle`
     text-decoration-skip-ink: auto;
     color: inherit;
     position: relative;
-    transition: ${theme.transition};
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
     cursor: pointer;
 
     &:hover,
     &:focus {
       color: ${colors.green};
+      outline: none;
+    }
+    
+    &:active {
+      transform: scale(0.98);
     }
   }
 

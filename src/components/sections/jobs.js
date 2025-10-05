@@ -67,13 +67,14 @@ const StyledTabButton = styled.button`
   background-color: transparent;
   height: ${theme.tabHeight}px;
   padding: 0 20px 2px;
-  transition: ${theme.transition};
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   border-left: 2px solid ${colors.lightestNavy};
   text-align: left;
   white-space: nowrap;
   font-family: ${fonts.SFMono};
   font-size: ${fontSizes.smish};
   color: ${props => (props.isActive ? colors.green : colors.slate)};
+  position: relative;
   ${media.tablet`padding: 0 15px 2px;`};
   ${media.thone`
     ${mixins.flexCenter};
@@ -85,8 +86,31 @@ const StyledTabButton = styled.button`
   `};
   &:hover,
   &:focus {
-    background-color: ${colors.lightNavy};
+    background-color: ${colors.lightNavy}60;
+    color: ${colors.green};
+    transform: translateX(3px);
+    ${media.thone`transform: translateY(-3px);`};
   }
+  
+  ${props => props.isActive && `
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: ${colors.gradient};
+      ${media.thone`
+        left: 0;
+        right: 0;
+        top: auto;
+        bottom: 0;
+        width: auto;
+        height: 2px;
+      `};
+    }
+  `}
 `;
 const StyledHighlight = styled.span`
   display: block;
@@ -139,9 +163,23 @@ const StyledJobTitle = styled.h4`
   font-size: ${fontSizes.xxl};
   font-weight: 500;
   margin-bottom: 5px;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    color: ${colors.green};
+  }
 `;
 const StyledCompany = styled.span`
-  color: ${colors.green};
+  background: ${colors.gradient};
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  
+  a:hover & {
+    filter: brightness(1.2);
+  }
 `;
 const StyledJobDetails = styled.h5`
   font-family: ${fonts.SFMono};
