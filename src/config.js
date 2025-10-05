@@ -1,15 +1,15 @@
 module.exports = {
 	siteTitle: "Gaurav Batra",
 	siteDescription:
-		"I'm a undergraduate researcher, currently completing my bachelors at IIIT, Hyderabad. I'm an honours research student at the Machine Learning Lab, where I work on algorithms in the Multi-Arm Bandit Setting.",
+		"Master's student at UW-Madison specializing in Systems and AI/ML. 3+ years building production MLOps platforms. Experienced in distributed systems, Kubernetes, and scalable AI infrastructure.",
 	siteKeywords:
-		"Gaurav Batra, Gaurav, Batra, suzaku_kuru, Suzaku_kuru, machine learning, Reinforcement Learning, Software Engineer",
+		"Gaurav Batra, Gaurav, Batra, MLOps, AI Infrastructure, Machine Learning Engineer, Distributed Systems, Kubernetes, Software Engineer, UW-Madison, Sigma Computing, Couture.ai",
 	siteUrl: "https://gauravbatra.netlify.app/",
 	siteLanguage: "en_US",
 	googleAnalyticsID: "G-74KX2392ZV",
 	// googleVerification: 'DCl7VAf9tcz6eD9gb67NfkNnJ1PKRNcg8qQiwpbx9Lk',
 	name: "Gaurav Batra",
-	location: "Madison,WI,USA",
+	location: "Madison, WI, USA",
 	email: "gbatra3@wisc.edu",
 	github: "https://github.com/batra98",
 	twitterHandle: "@GauravB57707626",
