@@ -69,7 +69,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 // https://www.gatsbyjs.org/docs/node-apis/#onCreateWebpackConfig
 exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
   // https://www.gatsbyjs.org/docs/debugging-html-builds/#fixing-third-party-modules
-  if (stage === 'build-html') {
+  if (stage === 'build-html' || stage === 'develop-html') {
     actions.setWebpackConfig({
       module: {
         rules: [
@@ -86,6 +86,7 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
     });
   }
 
+  // Apply aliases to all stages
   actions.setWebpackConfig({
     resolve: {
       alias: {
@@ -98,23 +99,28 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
         '@utils': path.resolve(__dirname, 'src/utils'),
       },
     },
-    // Optimize bundle splitting
-    optimization: {
-      splitChunks: {
-        chunks: 'all',
-        cacheGroups: {
-          vendor: {
-            test: /[\\/]node_modules[\\/]/,
-            name: 'vendors',
-            priority: 10,
-          },
-          common: {
-            minChunks: 2,
-            priority: 5,
-            reuseExistingChunk: true,
+  });
+
+  // Only apply optimization to client-side build, not SSR
+  if (stage === 'build-javascript' || stage === 'develop') {
+    actions.setWebpackConfig({
+      optimization: {
+        splitChunks: {
+          chunks: 'all',
+          cacheGroups: {
+            vendor: {
+              test: /[\\/]node_modules[\\/]/,
+              name: 'vendors',
+              priority: 10,
+            },
+            common: {
+              minChunks: 2,
+              priority: 5,
+              reuseExistingChunk: true,
+            },
           },
         },
       },
-    },
-  });
+    });
+  }
 };
