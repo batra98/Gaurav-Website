@@ -23,6 +23,9 @@ const GitHubGraph = () => (
       <img
         src="https://github-readme-stats.vercel.app/api?username=batra98&&show_icons=true&title_color=00D9FF&icon_color=7C3AED&text_color=00D9FF&bg_color=0F1729&border_color=2D3B5E"
         alt="batra98's Github stats"
+        width="495"
+        height="195"
+        loading="lazy"
       />
     </a>
   </StyledContainer>

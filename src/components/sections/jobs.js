@@ -19,14 +19,13 @@ const StyledTabs = styled.div`
     display: block;
   `};
 `;
-const StyledTabList = styled.ul`
+const StyledTabList = styled.div`
   display: block;
   position: relative;
   width: max-content;
   z-index: 3;
   padding: 0;
   margin: 0;
-  list-style: none;
 
   ${media.thone`
     display: flex;
@@ -40,23 +39,21 @@ const StyledTabList = styled.ul`
     margin-left: -25px;
   `};
 
-  li {
-    &:first-of-type {
-      ${media.thone`
-        margin-left: 50px;
-      `};
-      ${media.phablet`
-        margin-left: 25px;
-      `};
-    }
-    &:last-of-type {
-      ${media.thone`
-        padding-right: 50px;
-      `};
-      ${media.phablet`
-        padding-right: 25px;
-      `};
-    }
+  button:first-of-type {
+    ${media.thone`
+      margin-left: 50px;
+    `};
+    ${media.phablet`
+      margin-left: 25px;
+    `};
+  }
+  button:last-of-type {
+    ${media.thone`
+      padding-right: 50px;
+    `};
+    ${media.phablet`
+      padding-right: 25px;
+    `};
   }
 `;
 const StyledTabButton = styled.button`
@@ -238,24 +235,24 @@ const Jobs = ({ data }) => {
     <StyledContainer id="jobs" ref={revealContainer}>
       <Heading>Where I&apos;ve Worked</Heading>
       <StyledTabs>
-        <StyledTabList role="tablist" aria-label="Job tabs" onKeyDown={e => onKeyPressed(e)}>
+        <StyledTabList role="tablist" aria-label="Job tabs">
           {data &&
             data.map(({ node }, i) => {
               const { company } = node.frontmatter;
               return (
-                <li key={i}>
-                  <StyledTabButton
-                    isActive={activeTabId === i}
-                    onClick={() => setActiveTabId(i)}
-                    ref={el => (tabs.current[i] = el)}
-                    id={`tab-${i}`}
-                    role="tab"
-                    aria-selected={activeTabId === i ? true : false}
-                    aria-controls={`panel-${i}`}
-                    tabIndex={activeTabId === i ? '0' : '-1'}>
-                    <span>{company}</span>
-                  </StyledTabButton>
-                </li>
+                <StyledTabButton
+                  key={i}
+                  isActive={activeTabId === i}
+                  onClick={() => setActiveTabId(i)}
+                  onKeyDown={e => onKeyPressed(e)}
+                  ref={el => (tabs.current[i] = el)}
+                  id={`tab-${i}`}
+                  role="tab"
+                  aria-selected={activeTabId === i ? true : false}
+                  aria-controls={`panel-${i}`}
+                  tabIndex={activeTabId === i ? '0' : '-1'}>
+                  <span>{company}</span>
+                </StyledTabButton>
               );
             })}
           <StyledHighlight activeTabId={activeTabId} />

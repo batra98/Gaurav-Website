@@ -98,5 +98,23 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
         '@utils': path.resolve(__dirname, 'src/utils'),
       },
     },
+    // Optimize bundle splitting
+    optimization: {
+      splitChunks: {
+        chunks: 'all',
+        cacheGroups: {
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            priority: 10,
+          },
+          common: {
+            minChunks: 2,
+            priority: 5,
+            reuseExistingChunk: true,
+          },
+        },
+      },
+    },
   });
 };
