@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Layout } from '@components';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 import { theme, media } from '@styles';
-import JourneyMap, { DetailPanel } from '../components/journey/JourneyMap';
 import journeyData, { journeyStats } from '../data/journeyData';
 
 const JourneyContainer = styled.main`
@@ -139,9 +138,26 @@ const Instruction = styled.div`
   font-size: ${props => props.theme.fontSizes.sm};
 `;
 
+const LoadingMessage = styled.div`
+  text-align: center;
+  padding: 100px 20px;
+  color: ${props => props.theme.colors.slate};
+  font-family: ${props => props.theme.fonts.SFMono};
+`;
+
 const JourneyPage = ({ location }) => {
   const [activeLocation, setActiveLocation] = useState(null);
   const [detailPanelOpen, setDetailPanelOpen] = useState(false);
+  const [JourneyMapComponent, setJourneyMapComponent] = useState(null);
+  const [DetailPanelComponent, setDetailPanelComponent] = useState(null);
+
+  // Dynamically import map components (client-side only)
+  useEffect(() => {
+    import('../components/journey/JourneyMap').then(module => {
+      setJourneyMapComponent(() => module.default);
+      setDetailPanelComponent(() => module.DetailPanel);
+    });
+  }, []);
 
   const handleLocationClick = (loc) => {
     setActiveLocation(loc);
@@ -217,27 +233,34 @@ const JourneyPage = ({ location }) => {
               </SectionDescription>
             </SectionHeader>
 
-            <JourneyMap
-              data={journeyData}
-              activeLocation={activeLocation}
-              onLocationClick={handleLocationClick}
-            />
-
-            <Instruction>
-              🗺️ Click pins to explore • ▶ Play Journey for auto-tour • 🔄 Reset to zoom out
-            </Instruction>
+            {JourneyMapComponent ? (
+              <>
+                <JourneyMapComponent
+                  data={journeyData}
+                  activeLocation={activeLocation}
+                  onLocationClick={handleLocationClick}
+                />
+                <Instruction>
+                  🗺️ Click pins to explore • ▶ Play Journey for auto-tour • 🔄 Reset to zoom out
+                </Instruction>
+              </>
+            ) : (
+              <LoadingMessage>Loading map...</LoadingMessage>
+            )}
           </MapSection>
         </ContentWrapper>
 
-        <DetailPanel
-          location={activeLocation}
-          isOpen={detailPanelOpen}
-          onClose={handleClose}
-          onNext={handleNext}
-          onPrev={handlePrev}
-          hasNext={hasNext}
-          hasPrev={hasPrev}
-        />
+        {DetailPanelComponent && (
+          <DetailPanelComponent
+            location={activeLocation}
+            isOpen={detailPanelOpen}
+            onClose={handleClose}
+            onNext={handleNext}
+            onPrev={handlePrev}
+            hasNext={hasNext}
+            hasPrev={hasPrev}
+          />
+        )}
       </JourneyContainer>
     </Layout>
   );

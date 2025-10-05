@@ -143,7 +143,7 @@ export const journeyData = [
     role: 'Software Engineering Intern - AI',
     type: 'work',
     location: 'San Francisco, CA, USA',
-    coordinates: [-122.4194, 37.7749],
+    coordinates: [37.7749, -122.4194],
     icon: '✨',
     color: '#7C3AED',
     website: 'https://www.sigmacomputing.com/',
@@ -176,4 +176,4 @@ export const journeyStats = {
   performanceImprovement: 40,
 };
 
-export default journeyData;
+export default journeyData;ourneyData;;

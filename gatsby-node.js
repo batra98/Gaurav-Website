@@ -81,6 +81,14 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
             test: /animejs/,
             use: loaders.null(),
           },
+          {
+            test: /leaflet/,
+            use: loaders.null(),
+          },
+          {
+            test: /react-leaflet/,
+            use: loaders.null(),
+          },
         ],
       },
     });
