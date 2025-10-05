@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { email } from '@config';
@@ -150,7 +150,7 @@ const Hero = ({ data }) => {
 
   // Typing animation effect
   useEffect(() => {
-    if (!isMounted) return;
+    if (!isMounted) {return;}
     
     let currentIndex = 0;
     const typingSpeed = 100;

@@ -84,26 +84,26 @@ const Layout = ({ children, location }) => {
         <div id="root">
           <Head metadata={site.siteMetadata} />
 
-        <GlobalStyle />
+          <GlobalStyle />
 
-        <SkipToContent href="#content">Skip to Content</SkipToContent>
+          <SkipToContent href="#content">Skip to Content</SkipToContent>
 
-        {isLoading && isHome ? (
-          <Loader finishLoading={() => setIsLoading(false)} />
-        ) : (
-          <StyledContent>
-            <CursorFollower />
-            <ScrollProgress />
-            <Nav isHome={isHome} />
-            <Social isHome={isHome} />
-            <Email isHome={isHome} />
+          {isLoading && isHome ? (
+            <Loader finishLoading={() => setIsLoading(false)} />
+          ) : (
+            <StyledContent>
+              <CursorFollower />
+              <ScrollProgress />
+              <Nav isHome={isHome} />
+              <Social isHome={isHome} />
+              <Email isHome={isHome} />
 
-            <div id="content">
-              {children}
-              <Footer />
-            </div>
-          </StyledContent>
-        )}
+              <div id="content">
+                {children}
+                <Footer />
+              </div>
+            </StyledContent>
+          )}
         </div>
       )}
     />

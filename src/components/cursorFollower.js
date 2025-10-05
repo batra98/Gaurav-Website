@@ -71,14 +71,14 @@ const CursorFollower = () => {
         visible={visible}
         style={{ 
           left: `${position.x}px`, 
-          top: `${position.y}px` 
+          top: `${position.y}px`, 
         }} 
       />
       <CursorDot 
         visible={visible}
         style={{ 
           left: `${dotPosition.x}px`, 
-          top: `${dotPosition.y}px` 
+          top: `${dotPosition.y}px`, 
         }} 
       />
     </>
