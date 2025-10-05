@@ -10,7 +10,7 @@ const Overlay = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background: ${colors.navy}95;
+  background: ${colors.shadowNavy};
   backdrop-filter: blur(10px);
   z-index: 10000;
   display: ${props => (props.isOpen ? 'flex' : 'none')};
@@ -27,69 +27,92 @@ const Overlay = styled.div`
 
 const PaletteContainer = styled.div`
   width: 90%;
-  max-width: 600px;
-  background: linear-gradient(135deg, ${colors.lightNavy}95 0%, ${colors.lightNavy}85 100%);
+  max-width: 640px;
+  background: linear-gradient(135deg, ${colors.lightNavy}98 0%, ${colors.navy}95 100%);
   backdrop-filter: blur(20px);
-  border: 1px solid ${colors.lightestNavy}50;
-  border-radius: 16px;
-  box-shadow: 0 20px 60px ${colors.shadowNavy}, 0 0 0 1px ${colors.green}20;
+  border: 1px solid ${colors.green}30;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px ${colors.shadowNavy}, 0 0 0 1px ${colors.green}15;
   overflow: hidden;
-  animation: slideDown 0.3s ease;
+  animation: slideDown 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   
   @keyframes slideDown {
     from { 
       opacity: 0;
-      transform: translateY(-20px);
+      transform: translateY(-20px) scale(0.95);
     }
     to { 
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
     }
   }
 `;
 
 const SearchInput = styled.input`
   width: 100%;
-  padding: 20px 24px;
+  padding: 24px;
   background: transparent;
   border: none;
-  border-bottom: 1px solid ${colors.lightestNavy}40;
+  border-bottom: 1px solid ${colors.lightestNavy}30;
   color: ${colors.lightestSlate};
   font-size: ${fontSizes.xl};
   font-family: ${fonts.Calibre};
+  font-weight: 500;
   outline: none;
   
   &::placeholder {
     color: ${colors.slate};
+    font-weight: 400;
   }
 `;
 
 const ResultsList = styled.div`
-  max-height: 400px;
+  max-height: 420px;
   overflow-y: auto;
-  padding: 8px;
+  padding: 12px;
+  
+  /* Custom scrollbar */
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: ${colors.navy};
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: ${colors.lightestNavy};
+    border-radius: 4px;
+    
+    &:hover {
+      background: ${colors.green}50;
+    }
+  }
 `;
 
 const ResultItem = styled.div`
-  padding: 12px 16px;
+  padding: 14px 16px;
   margin: 4px 0;
   background: ${props => (props.isSelected ? colors.lightNavy : 'transparent')};
+  border: 1px solid ${props => (props.isSelected ? colors.green}40 : 'transparent')};
   border-radius: 8px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   
   &:hover {
     background: ${colors.lightNavy};
-    transform: translateX(4px);
+    border-color: ${colors.green}40;
+    transform: translateX(2px);
   }
 `;
 
 const ResultIcon = styled.span`
-  font-size: 20px;
+  font-size: 22px;
   min-width: 24px;
+  line-height: 1;
 `;
 
 const ResultContent = styled.div`
@@ -98,33 +121,38 @@ const ResultContent = styled.div`
 
 const ResultTitle = styled.div`
   color: ${colors.lightestSlate};
-  font-size: ${fontSizes.md};
+  font-size: ${fontSizes.lg};
   font-weight: 500;
+  font-family: ${fonts.Calibre};
+  margin-bottom: 2px;
 `;
 
 const ResultSubtitle = styled.div`
   color: ${colors.slate};
   font-size: ${fontSizes.sm};
-  margin-top: 2px;
+  font-family: ${fonts.Calibre};
 `;
 
 const Footer = styled.div`
-  padding: 12px 24px;
-  border-top: 1px solid ${colors.lightestNavy}40;
+  padding: 14px 24px;
+  border-top: 1px solid ${colors.lightestNavy}30;
   display: flex;
-  gap: 16px;
+  gap: 20px;
   font-size: ${fontSizes.sm};
   color: ${colors.slate};
   font-family: ${fonts.SFMono};
+  background: ${colors.navy}50;
 `;
 
 const Kbd = styled.kbd`
-  background: ${colors.lightNavy};
-  padding: 2px 8px;
+  background: ${colors.lightestNavy}40;
+  padding: 4px 10px;
   border-radius: 4px;
   border: 1px solid ${colors.lightestNavy}50;
-  color: ${colors.lightSlate};
+  color: ${colors.lightestSlate};
   font-size: ${fontSizes.xs};
+  font-family: ${fonts.SFMono};
+  font-weight: 500;
 `;
 
 // Search data

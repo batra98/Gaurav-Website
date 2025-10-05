@@ -18,7 +18,7 @@ const ToggleButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   font-size: 24px;
   
   &:hover {
@@ -39,144 +39,64 @@ const ToggleButton = styled.button`
   }
 `;
 
-const ThemeMenu = styled.div`
-  position: fixed;
-  bottom: 95px;
-  right: 30px;
-  background: linear-gradient(135deg, ${colors.lightNavy}95 0%, ${colors.lightNavy}85 100%);
-  backdrop-filter: blur(20px);
-  border: 1px solid ${colors.lightestNavy}50;
-  border-radius: 12px;
-  padding: 8px;
-  box-shadow: 0 12px 40px ${colors.shadowNavy};
-  z-index: 998;
-  opacity: ${props => (props.isOpen ? 1 : 0)};
-  transform: ${props => (props.isOpen ? 'translateY(0)' : 'translateY(10px)')};
-  pointer-events: ${props => (props.isOpen ? 'auto' : 'none')};
-  transition: all 0.3s ease;
-  min-width: 180px;
+const Tooltip = styled.div`
+  position: absolute;
+  bottom: 70px;
+  right: 0;
+  background: ${colors.lightNavy};
+  color: ${colors.lightestSlate};
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-family: ${colors.SFMono};
+  white-space: nowrap;
+  opacity: ${props => (props.show ? 1 : 0)};
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  box-shadow: 0 4px 12px ${colors.shadowNavy};
   
-  @media (max-width: 768px) {
-    bottom: 75px;
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
     right: 20px;
-  }
-`;
-
-const ThemeOption = styled.button`
-  width: 100%;
-  padding: 12px 16px;
-  background: ${props => (props.isActive ? colors.lightNavy : 'transparent')};
-  border: none;
-  border-radius: 8px;
-  color: ${props => (props.isActive ? colors.green : colors.lightSlate)};
-  cursor: pointer;
-  transition: all 0.2s ease;
-  text-align: left;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 14px;
-  font-family: inherit;
-  
-  &:hover {
+    width: 8px;
+    height: 8px;
     background: ${colors.lightNavy};
-    color: ${colors.green};
-    transform: translateX(4px);
+    transform: rotate(45deg);
   }
-  
-  &:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-`;
-
-const ThemeIcon = styled.span`
-  font-size: 18px;
-  min-width: 20px;
-`;
-
-const LockIcon = styled.span`
-  margin-left: auto;
-  font-size: 14px;
-  opacity: 0.5;
 `;
 
 const ThemeToggle = () => {
-  const [currentTheme, setCurrentTheme] = useState('dark');
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isUnlocked, setIsUnlocked] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(false);
 
-  useEffect(() => {
+  const handleClick = () => {
+    // For now, just show a message in console
+    // Full theme switching will come in next phase
     if (typeof window !== 'undefined') {
-      const savedTheme = localStorage.getItem('preferredTheme') || 'dark';
-      setCurrentTheme(savedTheme);
+      const currentTheme = localStorage.getItem('theme') || 'dark';
+      const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('theme', nextTheme);
       
-      const unlocked = localStorage.getItem('konamiUnlocked') === 'true' || 
-                       localStorage.getItem('secretUnlocked') === 'true';
-      setIsUnlocked(unlocked);
-      
-      // Listen for konami code unlock
-      const handleKonami = () => {
-        setIsUnlocked(true);
-      };
-      window.addEventListener('konamiActivated', handleKonami);
-      
-      return () => window.removeEventListener('konamiActivated', handleKonami);
+      // Show notification that this is coming soon
+      alert('🎨 Multiple themes coming soon!\n\nFor now, use Cmd/Ctrl+K to navigate quickly!');
     }
-  }, []);
-
-  const themes = [
-    { id: 'dark', name: 'Dark', icon: '🌙', locked: false },
-    { id: 'light', name: 'Light', icon: '☀️', locked: false },
-    { id: 'corporate', name: 'Corporate', icon: '💼', locked: false },
-    { id: 'cyberpunk', name: 'Cyberpunk', icon: '🌃', locked: !isUnlocked },
-  ];
-
-  const handleThemeChange = (themeId) => {
-    if (themeId === 'cyberpunk' && !isUnlocked) {
-      console.log('%c🔒 Cyberpunk theme is locked!', 'color: #FF006E; font-size: 16px; font-weight: bold;');
-      console.log('%cUnlock it by typing secret() or entering the Konami code!', 'color: #00FF41; font-size: 14px;');
-      return;
-    }
-    
-    setCurrentTheme(themeId);
-    localStorage.setItem('preferredTheme', themeId);
-    window.location.reload();
-  };
-
-  const getThemeIcon = () => {
-    const themeIcons = {
-      dark: '🌙',
-      light: '☀️',
-      corporate: '💼',
-      cyberpunk: '🌃',
-    };
-    return themeIcons[currentTheme] || '🎨';
   };
 
   return (
-    <>
+    <div style={{ position: 'relative' }}>
       <ToggleButton
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
-        aria-label="Toggle theme"
-        title="Change theme (or press Ctrl+K)">
-        {getThemeIcon()}
+        onClick={handleClick}
+        onMouseEnter={() => setShowTooltip(true)}
+        onMouseLeave={() => setShowTooltip(false)}
+        aria-label="Quick navigation"
+        title="Press Cmd/Ctrl+K for quick navigation">
+        🚀
       </ToggleButton>
-      
-      <ThemeMenu isOpen={isMenuOpen}>
-        {themes.map(themeOption => (
-          <ThemeOption
-            key={themeOption.id}
-            isActive={currentTheme === themeOption.id}
-            disabled={themeOption.locked}
-            onClick={() => handleThemeChange(themeOption.id)}>
-            <ThemeIcon>{themeOption.icon}</ThemeIcon>
-            <span>{themeOption.name}</span>
-            {themeOption.locked && <LockIcon>🔒</LockIcon>}
-          </ThemeOption>
-        ))}
-      </ThemeMenu>
-    </>
+      <Tooltip show={showTooltip}>
+        Press Cmd/Ctrl+K
+      </Tooltip>
+    </div>
   );
 };
 
