@@ -45,24 +45,27 @@ const Tooltip = styled.div`
   right: 0;
   background: ${colors.lightNavy};
   color: ${colors.lightestSlate};
-  padding: 8px 12px;
-  border-radius: 6px;
-  font-size: 12px;
-  font-family: ${colors.SFMono};
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: ${theme.fontSizes.sm};
+  font-family: ${theme.fonts.SFMono};
   white-space: nowrap;
   opacity: ${props => (props.show ? 1 : 0)};
   pointer-events: none;
   transition: opacity 0.2s ease;
   box-shadow: 0 4px 12px ${colors.shadowNavy};
+  border: 1px solid ${colors.green}30;
   
   &:after {
     content: '';
     position: absolute;
-    bottom: -4px;
-    right: 20px;
-    width: 8px;
-    height: 8px;
+    bottom: -5px;
+    right: 22px;
+    width: 10px;
+    height: 10px;
     background: ${colors.lightNavy};
+    border-right: 1px solid ${colors.green}30;
+    border-bottom: 1px solid ${colors.green}30;
     transform: rotate(45deg);
   }
 `;
@@ -70,31 +73,28 @@ const Tooltip = styled.div`
 const ThemeToggle = () => {
   const [showTooltip, setShowTooltip] = useState(false);
 
-  const handleClick = () => {
-    // For now, just show a message in console
-    // Full theme switching will come in next phase
-    if (typeof window !== 'undefined') {
-      const currentTheme = localStorage.getItem('theme') || 'dark';
-      const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      localStorage.setItem('theme', nextTheme);
-      
-      // Show notification that this is coming soon
-      alert('🎨 Multiple themes coming soon!\n\nFor now, use Cmd/Ctrl+K to navigate quickly!');
-    }
-  };
-
   return (
     <div style={{ position: 'relative' }}>
       <ToggleButton
-        onClick={handleClick}
         onMouseEnter={() => setShowTooltip(true)}
         onMouseLeave={() => setShowTooltip(false)}
-        aria-label="Quick navigation"
-        title="Press Cmd/Ctrl+K for quick navigation">
+        onClick={() => {
+          // Open command palette
+          const event = new KeyboardEvent('keydown', {
+            key: 'k',
+            code: 'KeyK',
+            ctrlKey: true,
+            metaKey: true,
+            bubbles: true,
+          });
+          document.dispatchEvent(event);
+        }}
+        aria-label="Quick navigation (Cmd+K)"
+        title="Quick search - Press Cmd/Ctrl+K">
         🚀
       </ToggleButton>
       <Tooltip show={showTooltip}>
-        Press Cmd/Ctrl+K
+        Quick Search (⌘K)
       </Tooltip>
     </div>
   );
