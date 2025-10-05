@@ -92,8 +92,10 @@ const Layout = ({ children, location }) => {
             <Loader finishLoading={() => setIsLoading(false)} />
           ) : (
             <StyledContent>
+              <CommandPalette />
               <CursorFollower />
               <ScrollProgress />
+              <ThemeToggle />
               <Nav isHome={isHome} />
               <Social isHome={isHome} />
               <Email isHome={isHome} />
