@@ -94,7 +94,7 @@ const ResultItem = styled.div`
   padding: 14px 16px;
   margin: 4px 0;
   background: ${props => (props.isSelected ? colors.lightNavy : 'transparent')};
-  border: 1px solid ${props => (props.isSelected ? colors.green}40 : 'transparent')};
+  border: 1px solid ${props => (props.isSelected ? `${colors.green}40` : 'transparent')};
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
