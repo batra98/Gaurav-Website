@@ -1,22 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { theme, media } from '@styles';
 
 const { colors, fontSizes, fonts } = theme;
-
-// Dynamic imports for Leaflet (client-side only)
-let LeafletMapContainer, LeafletTileLayer, LeafletMarker, LeafletPolyline, LeafletUseMap, L;
-
-if (typeof window !== 'undefined') {
-  const leaflet = require('react-leaflet');
-  LeafletMapContainer = leaflet.MapContainer;
-  LeafletTileLayer = leaflet.TileLayer;
-  LeafletMarker = leaflet.Marker;
-  LeafletPolyline = leaflet.Polyline;
-  LeafletUseMap = leaflet.useMap;
-  L = require('leaflet');
-  require('leaflet/dist/leaflet.css');
-}
 
 const MapContainer_Styled = styled.div`
   position: sticky;
@@ -148,103 +134,19 @@ const LoadingContainer = styled.div`
   font-size: ${fontSizes.md};
 `;
 
-// Component to handle map view updates
-function MapViewController({ activeLocation, data }) {
-  const map = LeafletUseMap();
-  
-  useEffect(() => {
-    if (!map) return;
-    
-    if (activeLocation && activeLocation.coordinates) {
-      // Fly to the active location
-      const [lng, lat] = activeLocation.coordinates;
-      map.flyTo([lat, lng], 6, {
-        duration: 1.5,
-        easeLinearity: 0.25,
-      });
-    } else {
-      // Show all locations
-      const bounds = data.map(loc => [loc.coordinates[1], loc.coordinates[0]]);
-      if (bounds.length > 0) {
-        map.fitBounds(bounds, {
-          padding: [50, 50],
-          maxZoom: 4,
-          duration: 1,
-        });
-      }
-    }
-  }, [activeLocation, map, data]);
-  
-  return null;
-}
-
-// Create custom marker icon
-const createMarkerIcon = (location, isActive) => {
-  if (typeof window === 'undefined' || !L) return null;
-  
-  const iconSize = isActive ? 44 : 32;
-  const iconHtml = `
-    <div style="
-      position: relative;
-      width: ${iconSize}px;
-      height: ${iconSize}px;
-    ">
-      <div style="
-        width: 100%;
-        height: 100%;
-        border-radius: 50% 50% 50% 0;
-        background: ${location.color || colors.green};
-        transform: rotate(-45deg);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: ${isActive ? '4px' : '3px'} solid white;
-        box-shadow: ${isActive 
-          ? `0 0 0 8px ${location.color || colors.green}40, 0 6px 20px rgba(0,0,0,0.5)` 
-          : '0 4px 12px rgba(0,0,0,0.4)'};
-        transition: all 0.3s ease;
-      ">
-        <div style="
-          transform: rotate(45deg);
-          font-size: ${isActive ? '22px' : '16px'};
-          line-height: 1;
-          transition: font-size 0.3s ease;
-        ">
-          ${location.icon}
-        </div>
-      </div>
-      ${isActive ? `
-        <div style="
-          position: absolute;
-          bottom: -8px;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 100%;
-          height: 4px;
-          background: ${location.color || colors.green};
-          border-radius: 2px;
-          animation: pulse 2s infinite;
-        "></div>
-      ` : ''}
-    </div>
-  `;
-  
-  return L.divIcon({
-    html: iconHtml,
-    className: 'custom-marker',
-    iconSize: [iconSize, iconSize],
-    iconAnchor: [iconSize / 2, iconSize],
-    popupAnchor: [0, -iconSize],
-  });
-};
-
 const MiniMap = ({ data, activeLocation, onLocationClick }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [LeafletRenderer, setLeafletRenderer] = useState(null);
   
   useEffect(() => {
-    // Ensure map loads only on client side
+    // Dynamically import the Leaflet renderer component only on client side
     if (typeof window !== 'undefined') {
-      setIsLoaded(true);
+      import('./LeafletMapRenderer')
+        .then((module) => {
+          setLeafletRenderer(() => module.default);
+        })
+        .catch((err) => {
+          console.error('Failed to load map:', err);
+        });
     }
   }, []);
   
@@ -254,14 +156,6 @@ const MiniMap = ({ data, activeLocation, onLocationClick }) => {
   const activeIndex = activeLocation 
     ? data.findIndex(loc => loc.id === activeLocation.id) + 1
     : 0;
-  
-  if (!isLoaded || !LeafletMapContainer || !LeafletTileLayer || !LeafletMarker || !LeafletPolyline) {
-    return (
-      <MapContainer_Styled>
-        <LoadingContainer>🗺️ Loading map...</LoadingContainer>
-      </MapContainer_Styled>
-    );
-  }
   
   return (
     <MapContainer_Styled>
@@ -286,69 +180,17 @@ const MiniMap = ({ data, activeLocation, onLocationClick }) => {
         </LocationCounter>
       </MapHeader>
       
-      <LeafletMapContainer
-        center={[20, 30]}
-        zoom={2}
-        zoomControl={true}
-        scrollWheelZoom={false}
-        doubleClickZoom={true}
-        dragging={true}
-        style={{ height: '100%', width: '100%' }}
-      >
-        {/* Dark theme tiles */}
-        <LeafletTileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-          url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+      {LeafletRenderer ? (
+        <LeafletRenderer
+          data={data}
+          activeLocation={activeLocation}
+          onLocationClick={onLocationClick}
+          pathCoordinates={pathCoordinates}
+          activeIndex={activeIndex}
         />
-        
-        {/* Journey path line */}
-        <LeafletPolyline
-          positions={pathCoordinates}
-          pathOptions={{
-            color: colors.green,
-            weight: 3,
-            opacity: 0.6,
-            dashArray: '10, 10',
-            dashOffset: '0',
-            lineCap: 'round',
-            lineJoin: 'round',
-          }}
-        />
-        
-        {/* Active path (progress line) */}
-        {activeLocation && (
-          <LeafletPolyline
-            positions={pathCoordinates.slice(0, activeIndex)}
-            pathOptions={{
-              color: colors.purple,
-              weight: 3,
-              opacity: 0.8,
-              lineCap: 'round',
-              lineJoin: 'round',
-            }}
-          />
-        )}
-        
-        {/* Location markers */}
-        {data.map((location, index) => {
-          const isActive = activeLocation?.id === location.id;
-          const isPast = activeLocation && index < activeIndex - 1;
-          
-          return (
-            <LeafletMarker
-              key={location.id}
-              position={[location.coordinates[1], location.coordinates[0]]}
-              icon={createMarkerIcon(location, isActive)}
-              opacity={isPast ? 0.6 : 1}
-              eventHandlers={{
-                click: () => onLocationClick?.(location),
-              }}
-            />
-          );
-        })}
-        
-        <MapViewController activeLocation={activeLocation} data={data} />
-      </LeafletMapContainer>
+      ) : (
+        <LoadingContainer>🗺️ Loading map...</LoadingContainer>
+      )}
     </MapContainer_Styled>
   );
 };
