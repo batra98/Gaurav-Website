@@ -150,9 +150,13 @@ const LoadingContainer = styled.div`
 
 // Component to handle map view updates
 const MapViewController = ({ activeLocation, data }) => {
+  if (!useMap) return null;
+  
   const map = useMap();
   
   useEffect(() => {
+    if (!map) return;
+    
     if (activeLocation && activeLocation.coordinates) {
       // Fly to the active location
       const [lng, lat] = activeLocation.coordinates;
@@ -246,20 +250,20 @@ const MiniMap = ({ data, activeLocation, onLocationClick }) => {
     }
   }, []);
   
-  if (!isLoaded) {
-    return (
-      <MapContainer_Styled>
-        <LoadingContainer>🗺️ Loading map...</LoadingContainer>
-      </MapContainer_Styled>
-    );
-  }
-  
   // Journey path coordinates [lat, lng]
   const pathCoordinates = data.map(loc => [loc.coordinates[1], loc.coordinates[0]]);
   
   const activeIndex = activeLocation 
     ? data.findIndex(loc => loc.id === activeLocation.id) + 1
     : 0;
+  
+  if (!isLoaded || !MapContainer || !TileLayer || !Marker || !Polyline) {
+    return (
+      <MapContainer_Styled>
+        <LoadingContainer>🗺️ Loading map...</LoadingContainer>
+      </MapContainer_Styled>
+    );
+  }
   
   return (
     <MapContainer_Styled>
