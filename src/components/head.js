@@ -27,6 +27,12 @@ const Head = ({ metadata }) => (
     </title>
     <link rel="shortcut icon" href={favicon} />
     <link rel="canonical" href="https://gauravbatra.netlify.app/" />
+    
+    {/* Preconnect to important third-party origins */}
+    <link rel="preconnect" href="https://github-readme-stats.vercel.app" />
+    <link rel="preconnect" href="https://www.google-analytics.com" />
+    <link rel="dns-prefetch" href="https://github-readme-stats.vercel.app" />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
     <meta name="description" content={metadata.description} />
     <meta name="keywords" content={config.siteKeywords} />

@@ -5290,6 +5290,15 @@ fragment-cache@^0.2.1:
   dependencies:
     map-cache "^0.2.2"
 
+framer-motion@^12.23.22:
+  version "12.23.22"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-12.23.22.tgz#798333fdcc5cd65fabfc450985b7236bbdbf5d64"
+  integrity sha512-ZgGvdxXCw55ZYvhoZChTlG6pUuehecgvEAJz0BHoC5pQKW1EC5xf1Mul1ej5+ai+pVY0pylyFfdl45qnM1/GsA==
+  dependencies:
+    motion-dom "^12.23.21"
+    motion-utils "^12.23.6"
+    tslib "^2.4.0"
+
 fresh@0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/fresh/-/fresh-0.5.2.tgz#3d8cadd90d976569fa835ab1f8e4b23a105605a7"
@@ -5496,11 +5505,6 @@ gatsby-plugin-ackee-tracker@^3.2.6:
     ackee-tracker "^5"
     babel-preset-gatsby-package "^2.24.0"
     cross-env "^7.0.3"
-
-gatsby-plugin-crisp-chat@^3.2.2:
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-crisp-chat/-/gatsby-plugin-crisp-chat-3.2.2.tgz#227b6f1f1311bbb37d392298e0b5a12ba9279a8d"
-  integrity sha512-7bFR/dEBu2u33kw6nGwoZN07Fy/LakB1k6f9SX4y6IZlzmNA4srbMCY/JMRz6yl0qskO7FfFP+xl01MXdEKkZw==
 
 gatsby-plugin-google-analytics@^3.4.0:
   version "3.15.0"
@@ -8806,6 +8810,18 @@ moment@^2.27.0:
   version "2.29.4"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.4.tgz#3dbe052889fe7c1b2ed966fcb3a77328964ef108"
   integrity sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==
+
+motion-dom@^12.23.21:
+  version "12.23.21"
+  resolved "https://registry.yarnpkg.com/motion-dom/-/motion-dom-12.23.21.tgz#1efe2d1bdda31875f0ee56d06f02be7b562a0bdd"
+  integrity sha512-5xDXx/AbhrfgsQmSE7YESMn4Dpo6x5/DTZ4Iyy4xqDvVHWvFVoV+V2Ri2S/ksx+D40wrZ7gPYiMWshkdoqNgNQ==
+  dependencies:
+    motion-utils "^12.23.6"
+
+motion-utils@^12.23.6:
+  version "12.23.6"
+  resolved "https://registry.yarnpkg.com/motion-utils/-/motion-utils-12.23.6.tgz#fafef80b4ea85122dd0d6c599a0c63d72881f312"
+  integrity sha512-eAWoPgr4eFEOFfg2WjIsMoqJTW6Z8MTUCgn/GZ3VRpClWBdnbjryiA3ZSNLyxCTmCQx4RmYX6jX1iWHbenUPNQ==
 
 mri@^1.1.0:
   version "1.2.0"

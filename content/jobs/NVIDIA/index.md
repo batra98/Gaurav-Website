@@ -1,14 +1,14 @@
 ---
 date: '2020-04-26'
-title: 'Software Engineer Intern'
+title: 'Software Engineer Intern - AI'
 company: 'NVIDIA'
 location: 'Pune, India'
-range: 'April - June 2020'
+range: 'April 2020 - June 2020'
 url: 'https://www.nvidia.com/en-in/'
 ---
 
-- I worked at Nvidia, as a **Software Intern in the Cloud gaming (GeForce) Team**.
-- My work revolved around **designing a Convolutional Neural Network that can prefilter images as a pre-processing step before compression**.
-- This CNN will ultimately be used as a pre-processing step in the Nvidia Ge-force Network.
-- Achieved a **15% improvement in PSNR scores and a 10% increase in SSIM metrics**, outperforming traditional JPEG methods. Reduced bits-per-pixel for video encoding, ensuring consistent frame rates even under limited bandwidth conditions.
-- Tech Involved: Tensorflow, Pytorch.
+- Engineered a **TensorFlow-based Convolutional Neural Network** for optimized image compression, inspired by *Better Compression with Deep Pre-Editing*.
+- Achieved a **15% improvement in Peak Signal-to-Noise Ratio scores** and a **10% increase in SSIM metrics**, outperforming traditional JPEG methods.
+- Optimized video encoding by **reducing bits-per-pixel** to maintain stable frame rates under bandwidth constraints.
+- Conducted extensive experiments and model tuning, leading to **27% performance improvement**.
+- Tech Involved: TensorFlow, PyTorch, Computer Vision, Image Compression.

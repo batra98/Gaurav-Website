@@ -1,11 +1,10 @@
 ---
 title: 'Hi, my name is'
 name: 'Gaurav Batra'
-subtitle: 'I like learning new things.'
-buttonText: 'Say Hello'
+subtitle: 'I build scalable AI systems.'
+buttonText: 'Get In Touch'
 ---
 
-I’m a first year Master’s student at the [UW-Madison](https://www.cs.wisc.edu/), majoring in Computer Science with a specialization in Systems and Machine Learning.
+I'm a Master's student at [UW-Madison](https://www.cs.wisc.edu/) specializing in Systems and AI/ML, with 3+ years of experience building production MLOps platforms and optimizing ML infrastructure.
 
-I aim to apply my strong academic foundation and practical industry experience in
-artificial intelligence to drive technological innovation and solve real-world problems.
+Currently seeking full-time opportunities in **AI Infrastructure, MLOps, and Distributed Systems** for **2026**.

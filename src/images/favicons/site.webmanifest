@@ -1,6 +1,6 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "Gaurav Batra - Software Engineer",
+    "short_name": "Gaurav Batra",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
@@ -8,7 +8,7 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#7ab547",
-    "background_color": "#7ab547",
+    "theme_color": "#00D9FF",
+    "background_color": "#0F1729",
     "display": "standalone"
 }

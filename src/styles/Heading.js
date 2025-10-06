@@ -11,6 +11,7 @@ const Heading = styled.h3`
   width: 100%;
   white-space: nowrap;
   font-size: ${fontSizes.h3};
+  color: ${colors.lightestSlate};
   ${media.tablet`font-size: 24px;`};
 
   &:before {
@@ -19,7 +20,10 @@ const Heading = styled.h3`
     margin-right: 10px;
     font-family: ${fonts.SFMono};
     font-weight: normal;
-    color: ${colors.green};
+    background: ${colors.gradient};
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     font-size: ${fontSizes.xl};
     position: relative;
     bottom: 4px;
@@ -29,9 +33,9 @@ const Heading = styled.h3`
   &:after {
     content: '';
     display: block;
-    height: 1px;
+    height: 2px;
     width: 300px;
-    background-color: ${colors.lightestNavy};
+    background: linear-gradient(90deg, ${colors.lightestNavy} 0%, transparent 100%);
     position: relative;
     top: -5px;
     margin-left: 20px;

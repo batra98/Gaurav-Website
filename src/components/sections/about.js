@@ -30,21 +30,43 @@ const SkillsContainer = styled.ul`
   padding: 0;
   margin: 20px 0 0 0;
   list-style: none;
+  gap: 12px;
 `;
 const Skill = styled.li`
   position: relative;
-  margin-bottom: 10px;
-  padding-left: 20px;
+  margin-bottom: 0;
+  padding: 10px 15px 10px 35px;
   font-family: ${fonts.SFMono};
   font-size: ${fontSizes.smish};
-  color: ${colors.slate};
+  color: ${colors.lightestSlate};
+  background: linear-gradient(135deg, ${colors.lightNavy}60 0%, ${colors.lightNavy}40 100%);
+  border-radius: 8px;
+  border: 1px solid ${colors.lightestNavy}30;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  
   &:before {
     content: '▹';
     position: absolute;
-    left: 0;
+    left: 12px;
     color: ${colors.green};
-    font-size: ${fontSizes.sm};
+    font-size: ${fontSizes.lg};
     line-height: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+  }
+  
+  &:hover {
+    transform: translateX(5px);
+    border-color: ${colors.green}50;
+    background: linear-gradient(135deg, ${colors.lightNavy}80 0%, ${colors.lightNavy}60 100%);
+    box-shadow: 0 4px 12px ${colors.green}20;
+    
+    &:before {
+      color: ${colors.purple};
+      transform: translateY(-50%) scale(1.2);
+    }
   }
 `;
 const StyledPic = styled.div`
@@ -68,15 +90,16 @@ const StyledAvatar = styled(Img)`
   transition: ${theme.transition};
 `;
 const StyledAvatarLink = styled.a`
-  ${mixins.boxShadow};
   width: 100%;
   position: relative;
-  border-radius: ${theme.borderRadius};
-  background-color: ${colors.green};
+  border-radius: 12px;
+  background: ${colors.gradient};
   margin-left: -20px;
+  transition: all 0.3s ease;
+  
   &:hover,
   &:focus {
-    background: transparent;
+    transform: scale(1.02);
     &:after {
       top: 15px;
       left: 15px;
@@ -93,7 +116,7 @@ const StyledAvatarLink = styled.a`
     position: absolute;
     width: 100%;
     height: 100%;
-    border-radius: ${theme.borderRadius};
+    border-radius: 12px;
     transition: ${theme.transition};
   }
   &:before {
@@ -105,7 +128,12 @@ const StyledAvatarLink = styled.a`
     mix-blend-mode: screen;
   }
   &:after {
-    border: 2px solid ${colors.green};
+    border: 2px solid transparent;
+    background: ${colors.gradient};
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    padding: 2px;
     top: 20px;
     left: 20px;
     z-index: -1;

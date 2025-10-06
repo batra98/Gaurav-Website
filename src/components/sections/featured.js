@@ -43,18 +43,30 @@ const StyledProjectName = styled.h5`
   }
 `;
 const StyledDescription = styled.div`
-  ${mixins.boxShadow};
   position: relative;
   z-index: 2;
   padding: 25px;
-  background-color: ${colors.lightNavy};
   color: ${colors.lightSlate};
   font-size: ${fontSizes.lg};
-  border-radius: ${theme.borderRadius};
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  
+  /* Glassmorphism effect */
+  background: linear-gradient(
+    135deg,
+    ${colors.lightNavy}95 0%,
+    ${colors.lightNavy}85 100%
+  );
+  backdrop-filter: blur(10px);
+  border: 1px solid ${colors.lightestNavy}40;
+  box-shadow: 0 8px 32px 0 ${colors.shadowNavy};
+  
   ${media.thone`
     background-color: transparent;
     padding: 20px 0;
     box-shadow: none;
+    backdrop-filter: none;
+    border: none;
     &:hover {
       box-shadow: none;
     }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
-import { Head, Loader, Nav, Social, Email, Footer } from '@components';
+import { Head, Loader, Nav, Social, Email, Footer, ScrollProgress, CursorFollower, CommandPalette, ThemeToggle } from '@components';
 import styled from 'styled-components';
 import { GlobalStyle, theme } from '@styles';
 const { colors, fontSizes, fonts } = theme;
@@ -49,7 +49,15 @@ const StyledContent = styled.div`
 
 const Layout = ({ children, location }) => {
   const isHome = location.pathname === '/';
-  const [isLoading, setIsLoading] = useState(isHome);
+  // Only show loader on initial home page load
+  const [hasLoadedBefore, setHasLoadedBefore] = useState(false);
+  const [isLoading, setIsLoading] = useState(isHome && !hasLoadedBefore);
+
+  useEffect(() => {
+    if (isHome && !hasLoadedBefore) {
+      setHasLoadedBefore(true);
+    }
+  }, [isHome, hasLoadedBefore]);
 
   useEffect(() => {
     if (isLoading) {
@@ -92,6 +100,9 @@ const Layout = ({ children, location }) => {
             <Loader finishLoading={() => setIsLoading(false)} />
           ) : (
             <StyledContent>
+              <CommandPalette />
+              <CursorFollower />
+              <ScrollProgress />
               <Nav isHome={isHome} />
               <Social isHome={isHome} />
               <Email isHome={isHome} />
