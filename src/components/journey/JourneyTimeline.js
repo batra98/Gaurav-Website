@@ -138,10 +138,26 @@ const TimelineDot = styled.div`
   `};
 `;
 
+const CompanyHeader = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+`;
+
+const CompanyLogo = styled.img`
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  object-fit: contain;
+  background: white;
+  padding: 8px;
+  border: 1px solid ${colors.lightestNavy}40;
+`;
+
 const IconContainer = styled.div`
   font-size: 48px;
   line-height: 1;
-  margin-bottom: 16px;
   display: inline-block;
   animation: ${props => props.isActive ? 'bounce 1s ease' : 'none'};
   
@@ -373,7 +389,17 @@ const JourneyTimeline = ({ data, activeItem, onItemClick, onItemHover }) => {
                 onMouseEnter={() => onItemHover?.(item)}
               >
                 <TypeBadge>{item.type}</TypeBadge>
-                <IconContainer isActive={isActive}>{item.icon}</IconContainer>
+                <CompanyHeader>
+                  {item.logo ? (
+                    <CompanyLogo src={item.logo} alt={item.title} onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.nextSibling.style.display = 'inline-block';
+                    }} />
+                  ) : (
+                    <IconContainer isActive={isActive}>{item.icon}</IconContainer>
+                  )}
+                  {item.logo && <IconContainer isActive={isActive} style={{ display: 'none' }}>{item.icon}</IconContainer>}
+                </CompanyHeader>
                 <CardTitle>{item.title}</CardTitle>
                 <CardRole>{item.role}</CardRole>
                 

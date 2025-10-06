@@ -158,6 +158,7 @@ const Kbd = styled.kbd`
 // Search data
 const SEARCH_DATA = [
   { id: 'about', title: 'About Me', subtitle: 'Learn about my background', icon: '👤', path: '/#about' },
+  { id: 'journey', title: 'Journey', subtitle: 'My professional timeline', icon: '🛤️', path: '/journey' },
   { id: 'experience', title: 'Experience', subtitle: 'My work history', icon: '💼', path: '/#jobs' },
   { id: 'projects', title: 'Projects', subtitle: 'Things I\'ve built', icon: '🚀', path: '/#projects' },
   { id: 'contact', title: 'Contact', subtitle: 'Get in touch', icon: '📧', path: '/#contact' },

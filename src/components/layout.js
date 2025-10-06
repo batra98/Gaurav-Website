@@ -49,7 +49,15 @@ const StyledContent = styled.div`
 
 const Layout = ({ children, location }) => {
   const isHome = location.pathname === '/';
-  const [isLoading, setIsLoading] = useState(isHome);
+  // Only show loader on initial home page load
+  const [hasLoadedBefore, setHasLoadedBefore] = useState(false);
+  const [isLoading, setIsLoading] = useState(isHome && !hasLoadedBefore);
+
+  useEffect(() => {
+    if (isHome && !hasLoadedBefore) {
+      setHasLoadedBefore(true);
+    }
+  }, [isHome, hasLoadedBefore]);
 
   useEffect(() => {
     if (isLoading) {

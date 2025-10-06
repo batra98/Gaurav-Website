@@ -112,6 +112,17 @@ const TypeBadge = styled.span`
   margin-bottom: 12px;
 `;
 
+const CompanyLogoLarge = styled.img`
+  width: 72px;
+  height: 72px;
+  border-radius: 12px;
+  object-fit: contain;
+  background: white;
+  padding: 12px;
+  border: 1px solid ${colors.lightestNavy}40;
+  margin-bottom: 16px;
+`;
+
 const Icon = styled.div`
   font-size: 56px;
   margin-bottom: 16px;
@@ -358,7 +369,19 @@ const DetailModal = ({ location, isOpen, onClose, onNext, onPrev, hasNext, hasPr
         
         <Header>
           <TypeBadge>{location.type}</TypeBadge>
-          <Icon>{location.icon}</Icon>
+          {location.logo ? (
+            <CompanyLogoLarge 
+              src={location.logo} 
+              alt={location.title}
+              onError={(e) => {
+                e.target.style.display = 'none';
+                e.target.nextSibling.style.display = 'block';
+              }}
+            />
+          ) : (
+            <Icon>{location.icon}</Icon>
+          )}
+          {location.logo && <Icon style={{ display: 'none' }}>{location.icon}</Icon>}
           <Title>{location.title}</Title>
           <Role>{location.role}</Role>
           <Meta>

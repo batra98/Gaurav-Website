@@ -12,6 +12,7 @@ export const journeyData = [
     coordinates: [78.5482, 17.4449], // [longitude, latitude]
     icon: '🎓',
     color: '#00D9FF',
+    logo: 'https://logo.clearbit.com/iiit.ac.in',
     website: 'https://www.iiit.ac.in/',
     description: 'Started my journey in Computer Science with a focus on Machine Learning and Systems. Graduated with honours and a stellar 9.48 CGPA.',
     achievements: [
@@ -38,6 +39,7 @@ export const journeyData = [
     coordinates: [78.5482, 17.4449], // Same as IIIT
     icon: '🔬',
     color: '#7C3AED',
+    logo: 'https://logo.clearbit.com/iiit.ac.in',
     website: 'https://mll.iiit.ac.in/',
     description: 'Research on Multi-Arm Bandit algorithms and classification under partial feedback settings, advised by Prof. Naresh Manwani.',
     achievements: [
@@ -64,6 +66,7 @@ export const journeyData = [
     coordinates: [73.8567, 18.5204],
     icon: '💼',
     color: '#76B900', // NVIDIA green
+    logo: 'https://logo.clearbit.com/nvidia.com',
     website: 'https://www.nvidia.com/',
     description: 'Worked on deep learning-based image compression for GeForce Now cloud gaming platform. Optimized video encoding for bandwidth-constrained environments.',
     achievements: [
@@ -90,6 +93,7 @@ export const journeyData = [
     coordinates: [77.5946, 12.9716],
     icon: '🚀',
     color: '#00D9FF',
+    logo: 'https://logo.clearbit.com/caistack.com',
     website: 'https://caistack.com/',
     description: 'Core platform engineer building and scaling the Couture.ai MLOps platform. Led infrastructure design, optimization, and the first U.S. client deployment.',
     achievements: [
@@ -119,6 +123,7 @@ export const journeyData = [
     coordinates: [-89.4012, 43.0731],
     icon: '🎓',
     color: '#C5050C', // UW-Madison red
+    logo: 'https://logo.clearbit.com/wisc.edu',
     website: 'https://www.cs.wisc.edu/',
     description: 'Pursuing MS in Computer Science with specialization in Systems and AI/ML. Building expertise in distributed systems, filesystems, and large-scale ML infrastructure.',
     achievements: [
@@ -146,6 +151,7 @@ export const journeyData = [
     coordinates: [37.7749, -122.4194],
     icon: '✨',
     color: '#7C3AED',
+    logo: 'https://logo.clearbit.com/sigmacomputing.com',
     website: 'https://www.sigmacomputing.com/',
     description: 'Building semantic search features for Ask Sigma. Deploying scalable ML services on Kubernetes for natural language workbook discovery.',
     achievements: [
