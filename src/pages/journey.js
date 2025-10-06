@@ -201,20 +201,8 @@ const JourneyPage = ({ location }) => {
                 <StatLabel>Years Experience</StatLabel>
               </StatCard>
               <StatCard>
-                <StatValue>{journeyStats.microservices}+</StatValue>
-                <StatLabel>Microservices</StatLabel>
-              </StatCard>
-              <StatCard>
                 <StatValue>{journeyStats.publications}</StatValue>
                 <StatLabel>Publication</StatLabel>
-              </StatCard>
-              <StatCard>
-                <StatValue>$250k</StatValue>
-                <StatLabel>ARR Impact</StatLabel>
-              </StatCard>
-              <StatCard>
-                <StatValue>{journeyStats.performanceImprovement}%</StatValue>
-                <StatLabel>Performance Gain</StatLabel>
               </StatCard>
             </StatsGrid>
           </Hero>
