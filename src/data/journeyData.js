@@ -176,4 +176,4 @@ export const journeyStats = {
   performanceImprovement: 40,
 };
 
-export default journeyData;ourneyData;;
+export default journeyData;
