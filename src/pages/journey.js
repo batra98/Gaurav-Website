@@ -4,6 +4,9 @@ import { Link } from 'gatsby';
 import styled from 'styled-components';
 import { theme, media } from '@styles';
 import journeyData, { journeyStats } from '../data/journeyData';
+import JourneyTimeline from '../components/journey/JourneyTimeline';
+import MiniMap from '../components/journey/MiniMap';
+import DetailModal from '../components/journey/DetailModal';
 
 const { colors, fontSizes, fonts } = theme;
 
@@ -15,7 +18,7 @@ const JourneyContainer = styled.main`
 `;
 
 const ContentWrapper = styled.div`
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 50px;
   
@@ -107,8 +110,37 @@ const StatLabel = styled.div`
   font-family: ${fonts.SFMono};
 `;
 
-const MapSection = styled.section`
-  margin: 60px 0;
+const HybridLayout = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 500px;
+  gap: 60px;
+  margin-top: 60px;
+  align-items: start;
+  
+  ${media.bigDesktop`
+    grid-template-columns: 1fr 450px;
+    gap: 50px;
+  `};
+  
+  ${media.desktop`
+    grid-template-columns: 1fr 400px;
+    gap: 40px;
+  `};
+  
+  ${media.tablet`
+    grid-template-columns: 1fr;
+    gap: 40px;
+  `};
+`;
+
+const TimelineSection = styled.div`
+  min-height: 100vh;
+`;
+
+const MapSection = styled.div`
+  ${media.tablet`
+    order: -1;
+  `};
 `;
 
 const SectionHeader = styled.div`
@@ -120,74 +152,75 @@ const SectionTitle = styled.h2`
   font-size: ${fontSizes.h3};
   color: ${colors.lightestSlate};
   margin-bottom: 12px;
+  
+  ${media.tablet`
+    font-size: ${fontSizes.xxl};
+  `};
 `;
 
 const SectionDescription = styled.p`
   font-size: ${fontSizes.md};
   color: ${colors.slate};
   font-family: ${fonts.SFMono};
-`;
-
-const Instruction = styled.div`
-  text-align: center;
-  margin-top: 20px;
-  padding: 16px;
-  background: ${colors.lightNavy}40;
-  border-radius: 8px;
-  border: 1px solid ${colors.green}20;
-  color: ${colors.slate};
-  font-family: ${fonts.SFMono};
-  font-size: ${fontSizes.sm};
-`;
-
-const LoadingMessage = styled.div`
-  text-align: center;
-  padding: 100px 20px;
-  color: ${colors.slate};
-  font-family: ${fonts.SFMono};
+  max-width: 600px;
+  margin: 0 auto;
+  
+  ${media.phone`
+    font-size: ${fontSizes.sm};
+  `};
 `;
 
 const JourneyPage = ({ location }) => {
-  const [activeLocation, setActiveLocation] = useState(null);
-  const [detailPanelOpen, setDetailPanelOpen] = useState(false);
-  const [JourneyMapComponent, setJourneyMapComponent] = useState(null);
-  const [DetailPanelComponent, setDetailPanelComponent] = useState(null);
+  const [activeItem, setActiveItem] = useState(null);
+  const [hoveredItem, setHoveredItem] = useState(null);
+  const [detailModalOpen, setDetailModalOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
-  // Dynamically import map components (client-side only)
   useEffect(() => {
-    import('../components/journey/JourneyMap').then(module => {
-      setJourneyMapComponent(() => module.default);
-      setDetailPanelComponent(() => module.DetailPanel);
-    });
+    setIsMounted(true);
   }, []);
 
-  const handleLocationClick = (loc) => {
-    setActiveLocation(loc);
-    setDetailPanelOpen(true);
+  const handleItemClick = (item) => {
+    setActiveItem(item);
+    setDetailModalOpen(true);
+  };
+
+  const handleItemHover = (item) => {
+    setHoveredItem(item);
+  };
+
+  const handleLocationClick = (item) => {
+    setActiveItem(item);
+    // Scroll to the item in timeline
+    const element = document.querySelector(`[data-timeline-item][data-index="${journeyData.findIndex(d => d.id === item.id)}"]`);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
   };
 
   const handleClose = () => {
-    setDetailPanelOpen(false);
-    setTimeout(() => setActiveLocation(null), 400);
+    setDetailModalOpen(false);
   };
 
   const handleNext = () => {
-    const currentIndex = journeyData.findIndex(l => l.id === activeLocation?.id);
+    const currentIndex = journeyData.findIndex(l => l.id === activeItem?.id);
     if (currentIndex < journeyData.length - 1) {
-      handleLocationClick(journeyData[currentIndex + 1]);
+      setActiveItem(journeyData[currentIndex + 1]);
     }
   };
 
   const handlePrev = () => {
-    const currentIndex = journeyData.findIndex(l => l.id === activeLocation?.id);
+    const currentIndex = journeyData.findIndex(l => l.id === activeItem?.id);
     if (currentIndex > 0) {
-      handleLocationClick(journeyData[currentIndex - 1]);
+      setActiveItem(journeyData[currentIndex - 1]);
     }
   };
 
-  const currentIndex = journeyData.findIndex(l => l.id === activeLocation?.id);
+  const currentIndex = journeyData.findIndex(l => l.id === activeItem?.id);
   const hasNext = currentIndex < journeyData.length - 1;
   const hasPrev = currentIndex > 0;
+
+  const displayItem = hoveredItem || activeItem;
 
   return (
     <Layout location={location}>
@@ -227,42 +260,44 @@ const JourneyPage = ({ location }) => {
             </StatsGrid>
           </Hero>
 
-          <MapSection>
-            <SectionHeader>
-              <SectionTitle>Interactive Journey Map</SectionTitle>
-              <SectionDescription>
-                Click on any pin to explore my journey • Use Play Journey to see it all
-              </SectionDescription>
-            </SectionHeader>
+          <SectionHeader>
+            <SectionTitle>Professional Timeline</SectionTitle>
+            <SectionDescription>
+              Follow my career journey through education, research, and industry roles
+            </SectionDescription>
+          </SectionHeader>
 
-            {JourneyMapComponent ? (
-              <>
-                <JourneyMapComponent
+          <HybridLayout>
+            <TimelineSection>
+              <JourneyTimeline
+                data={journeyData}
+                activeItem={displayItem}
+                onItemClick={handleItemClick}
+                onItemHover={handleItemHover}
+              />
+            </TimelineSection>
+
+            {isMounted && (
+              <MapSection>
+                <MiniMap
                   data={journeyData}
-                  activeLocation={activeLocation}
+                  activeLocation={displayItem}
                   onLocationClick={handleLocationClick}
                 />
-                <Instruction>
-                  🗺️ Click pins to explore • ▶ Play Journey for auto-tour • 🔄 Reset to zoom out
-                </Instruction>
-              </>
-            ) : (
-              <LoadingMessage>Loading map...</LoadingMessage>
+              </MapSection>
             )}
-          </MapSection>
+          </HybridLayout>
         </ContentWrapper>
 
-        {DetailPanelComponent && (
-          <DetailPanelComponent
-            location={activeLocation}
-            isOpen={detailPanelOpen}
-            onClose={handleClose}
-            onNext={handleNext}
-            onPrev={handlePrev}
-            hasNext={hasNext}
-            hasPrev={hasPrev}
-          />
-        )}
+        <DetailModal
+          location={activeItem}
+          isOpen={detailModalOpen}
+          onClose={handleClose}
+          onNext={handleNext}
+          onPrev={handlePrev}
+          hasNext={hasNext}
+          hasPrev={hasPrev}
+        />
       </JourneyContainer>
     </Layout>
   );
