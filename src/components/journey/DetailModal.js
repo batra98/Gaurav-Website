@@ -362,8 +362,8 @@ const DetailModal = ({ location, isOpen, onClose, onNext, onPrev, hasNext, hasPr
           <Title>{location.title}</Title>
           <Role>{location.role}</Role>
           <Meta>
-            <span>📍 {location.location}</span>
-            <span>📅 {location.year}</span>
+            <span>{location.location}</span>
+            <span>{location.year}</span>
           </Meta>
 
           {location.current && (
@@ -392,7 +392,7 @@ const DetailModal = ({ location, isOpen, onClose, onNext, onPrev, hasNext, hasPr
 
         {location.achievements && location.achievements.length > 0 && (
           <Section>
-            <SectionTitle>✨ Key Achievements</SectionTitle>
+            <SectionTitle>Key Achievements</SectionTitle>
             <AchievementList>
               {location.achievements.map((achievement, idx) => (
                 <Achievement key={idx}>{achievement}</Achievement>
@@ -403,7 +403,7 @@ const DetailModal = ({ location, isOpen, onClose, onNext, onPrev, hasNext, hasPr
 
         {location.techStack && location.techStack.length > 0 && (
           <Section>
-            <SectionTitle>💻 Technologies</SectionTitle>
+            <SectionTitle>Technologies</SectionTitle>
             <TechStack>
               {location.techStack.map((tech, idx) => (
                 <TechPill key={idx}>{tech}</TechPill>

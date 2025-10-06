@@ -378,8 +378,8 @@ const JourneyTimeline = ({ data, activeItem, onItemClick, onItemHover }) => {
                 <CardRole>{item.role}</CardRole>
                 
                 <CardMeta>
-                  <MetaItem>📍 {item.location}</MetaItem>
-                  <MetaItem>📅 {item.year}</MetaItem>
+                  <MetaItem>{item.location}</MetaItem>
+                  <MetaItem>{item.year}</MetaItem>
                 </CardMeta>
 
                 {item.current && (
@@ -394,7 +394,7 @@ const JourneyTimeline = ({ data, activeItem, onItemClick, onItemHover }) => {
                 
                 {item.achievements && item.achievements.length > 0 && (
                   <AchievementPreview>
-                    ✨ {item.achievements[0]}
+                    {item.achievements[0]}
                     {item.achievements.length > 1 && ` (+${item.achievements.length - 1} more)`}
                   </AchievementPreview>
                 )}

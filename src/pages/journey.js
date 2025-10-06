@@ -222,7 +222,7 @@ const JourneyPage = ({ location }) => {
           <SectionHeader>
             <SectionTitle>Professional Timeline</SectionTitle>
             <SectionDescription>
-              Follow my career journey through education, research, and industry • Click any card for details
+              Education, research, and industry experience from 2017 to present
             </SectionDescription>
           </SectionHeader>
 
