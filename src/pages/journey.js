@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import { theme, media } from '@styles';
 import journeyData, { journeyStats } from '../data/journeyData';
 
+const { colors, fontSizes, fonts } = theme;
+
 const JourneyContainer = styled.main`
   min-height: 100vh;
   padding: 100px 0 50px;
@@ -25,9 +27,9 @@ const BackLink = styled(Link)`
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: ${props => props.theme.colors.green};
-  font-family: ${props => props.theme.fonts.SFMono};
-  font-size: ${props => props.theme.fontSizes.sm};
+  color: ${colors.green};
+  font-family: ${fonts.SFMono};
+  font-size: ${fontSizes.sm};
   margin-bottom: 40px;
   transition: all 0.2s ease;
   
@@ -43,7 +45,7 @@ const Hero = styled.div`
 
 const Title = styled.h1`
   font-size: 60px;
-  background: ${props => props.theme.colors.gradient};
+  background: ${colors.gradient};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -55,11 +57,11 @@ const Title = styled.h1`
 `;
 
 const Subtitle = styled.p`
-  font-size: ${props => props.theme.fontSizes.xl};
-  color: ${props => props.theme.colors.slate};
+  font-size: ${fontSizes.xl};
+  color: ${colors.slate};
   margin: 0 0 40px 0;
   
-  ${media.tablet`font-size: ${theme.fontSizes.lg};`};
+  ${media.tablet`font-size: ${fontSizes.lg};`};
 `;
 
 const StatsGrid = styled.div`
@@ -74,25 +76,25 @@ const StatsGrid = styled.div`
 `;
 
 const StatCard = styled.div`
-  background: linear-gradient(135deg, ${props => props.theme.colors.lightNavy}60 0%, ${props => props.theme.colors.lightNavy}40 100%);
+  background: linear-gradient(135deg, ${colors.lightNavy}60 0%, ${colors.lightNavy}40 100%);
   backdrop-filter: blur(10px);
-  border: 1px solid ${props => props.theme.colors.lightestNavy}30;
+  border: 1px solid ${colors.lightestNavy}30;
   border-radius: 12px;
   padding: 20px;
   text-align: center;
   transition: all 0.3s ease;
   
   &:hover {
-    border-color: ${props => props.theme.colors.green}50;
+    border-color: ${colors.green}50;
     transform: translateY(-4px);
-    box-shadow: 0 8px 24px ${props => props.theme.colors.green}20;
+    box-shadow: 0 8px 24px ${colors.green}20;
   }
 `;
 
 const StatValue = styled.div`
   font-size: 32px;
   font-weight: 700;
-  background: ${props => props.theme.colors.gradient};
+  background: ${colors.gradient};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -100,9 +102,9 @@ const StatValue = styled.div`
 `;
 
 const StatLabel = styled.div`
-  font-size: ${props => props.theme.fontSizes.sm};
-  color: ${props => props.theme.colors.slate};
-  font-family: ${props => props.theme.fonts.SFMono};
+  font-size: ${fontSizes.sm};
+  color: ${colors.slate};
+  font-family: ${fonts.SFMono};
 `;
 
 const MapSection = styled.section`
@@ -115,34 +117,34 @@ const SectionHeader = styled.div`
 `;
 
 const SectionTitle = styled.h2`
-  font-size: ${props => props.theme.fontSizes.h3};
-  color: ${props => props.theme.colors.lightestSlate};
+  font-size: ${fontSizes.h3};
+  color: ${colors.lightestSlate};
   margin-bottom: 12px;
 `;
 
 const SectionDescription = styled.p`
-  font-size: ${props => props.theme.fontSizes.md};
-  color: ${props => props.theme.colors.slate};
-  font-family: ${props => props.theme.fonts.SFMono};
+  font-size: ${fontSizes.md};
+  color: ${colors.slate};
+  font-family: ${fonts.SFMono};
 `;
 
 const Instruction = styled.div`
   text-align: center;
   margin-top: 20px;
   padding: 16px;
-  background: ${props => props.theme.colors.lightNavy}40;
+  background: ${colors.lightNavy}40;
   border-radius: 8px;
-  border: 1px solid ${props => props.theme.colors.green}20;
-  color: ${props => props.theme.colors.slate};
-  font-family: ${props => props.theme.fonts.SFMono};
-  font-size: ${props => props.theme.fontSizes.sm};
+  border: 1px solid ${colors.green}20;
+  color: ${colors.slate};
+  font-family: ${fonts.SFMono};
+  font-size: ${fontSizes.sm};
 `;
 
 const LoadingMessage = styled.div`
   text-align: center;
   padding: 100px 20px;
-  color: ${props => props.theme.colors.slate};
-  font-family: ${props => props.theme.fonts.SFMono};
+  color: ${colors.slate};
+  font-family: ${fonts.SFMono};
 `;
 
 const JourneyPage = ({ location }) => {
