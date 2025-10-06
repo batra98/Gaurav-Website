@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Layout } from '@components';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 import { theme, media } from '@styles';
 import journeyData, { journeyStats } from '../data/journeyData';
 import JourneyTimeline from '../components/journey/JourneyTimeline';
-import MiniMap from '../components/journey/MiniMap';
 import DetailModal from '../components/journey/DetailModal';
 
 const { colors, fontSizes, fonts } = theme;
@@ -110,37 +109,11 @@ const StatLabel = styled.div`
   font-family: ${fonts.SFMono};
 `;
 
-const HybridLayout = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 500px;
-  gap: 60px;
+const TimelineWrapper = styled.div`
   margin-top: 60px;
-  align-items: start;
-  
-  ${media.bigDesktop`
-    grid-template-columns: 1fr 450px;
-    gap: 50px;
-  `};
-  
-  ${media.desktop`
-    grid-template-columns: 1fr 400px;
-    gap: 40px;
-  `};
-  
-  ${media.tablet`
-    grid-template-columns: 1fr;
-    gap: 40px;
-  `};
-`;
-
-const TimelineSection = styled.div`
-  min-height: 100vh;
-`;
-
-const MapSection = styled.div`
-  ${media.tablet`
-    order: -1;
-  `};
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 const SectionHeader = styled.div`
@@ -174,11 +147,6 @@ const JourneyPage = ({ location }) => {
   const [activeItem, setActiveItem] = useState(null);
   const [hoveredItem, setHoveredItem] = useState(null);
   const [detailModalOpen, setDetailModalOpen] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   const handleItemClick = (item) => {
     setActiveItem(item);
@@ -187,15 +155,6 @@ const JourneyPage = ({ location }) => {
 
   const handleItemHover = (item) => {
     setHoveredItem(item);
-  };
-
-  const handleLocationClick = (item) => {
-    setActiveItem(item);
-    // Scroll to the item in timeline
-    const element = document.querySelector(`[data-timeline-item][data-index="${journeyData.findIndex(d => d.id === item.id)}"]`);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
   };
 
   const handleClose = () => {
@@ -263,30 +222,18 @@ const JourneyPage = ({ location }) => {
           <SectionHeader>
             <SectionTitle>Professional Timeline</SectionTitle>
             <SectionDescription>
-              Follow my career journey through education, research, and industry roles
+              Follow my career journey through education, research, and industry • Click any card for details
             </SectionDescription>
           </SectionHeader>
 
-          <HybridLayout>
-            <TimelineSection>
-              <JourneyTimeline
-                data={journeyData}
-                activeItem={displayItem}
-                onItemClick={handleItemClick}
-                onItemHover={handleItemHover}
-              />
-            </TimelineSection>
-
-            {isMounted && (
-              <MapSection>
-                <MiniMap
-                  data={journeyData}
-                  activeLocation={displayItem}
-                  onLocationClick={handleLocationClick}
-                />
-              </MapSection>
-            )}
-          </HybridLayout>
+          <TimelineWrapper>
+            <JourneyTimeline
+              data={journeyData}
+              activeItem={displayItem}
+              onItemClick={handleItemClick}
+              onItemHover={handleItemHover}
+            />
+          </TimelineWrapper>
         </ContentWrapper>
 
         <DetailModal
