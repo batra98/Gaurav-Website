@@ -141,19 +141,19 @@ export const journeyData = [
   },
   {
     id: 'sigma-computing',
-    year: '2025',
-    startYear: 2025,
-    endYear: 2025,
+    year: 'May - Aug 2024',
+    startYear: 2024,
+    endYear: 2024,
     title: 'Sigma Computing',
     role: 'Software Engineering Intern - AI',
     type: 'work',
     location: 'San Francisco, CA, USA',
-    coordinates: [37.7749, -122.4194],
+    coordinates: [-122.4194, 37.7749],
     icon: '✨',
     color: '#7C3AED',
     logo: 'https://logo.clearbit.com/sigmacomputing.com',
     website: 'https://www.sigmacomputing.com/',
-    description: 'Building semantic search features for Ask Sigma. Deploying scalable ML services on Kubernetes for natural language workbook discovery.',
+    description: 'Built semantic search features for Ask Sigma. Deployed scalable ML services on Kubernetes for natural language workbook discovery.',
     achievements: [
       '30% improvement over legacy search',
       '100+ daily queries served',
@@ -162,10 +162,9 @@ export const journeyData = [
     ],
     techStack: ['Python', 'Kubernetes', 'Semantic Search', 'NLP', 'Production ML'],
     metrics: {
-      duration: 'Summer 2025',
+      duration: '3 months',
       achievement: '30% improvement',
     },
-    upcoming: true, // Future role
   },
 ];
 

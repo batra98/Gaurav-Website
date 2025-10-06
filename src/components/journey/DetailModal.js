@@ -392,10 +392,6 @@ const DetailModal = ({ location, isOpen, onClose, onNext, onPrev, hasNext, hasPr
           {location.current && (
             <StatusBadge>Currently here</StatusBadge>
           )}
-          
-          {location.upcoming && (
-            <StatusBadge>Upcoming - Summer 2025</StatusBadge>
-          )}
         </Header>
 
         <Description>{location.description}</Description>

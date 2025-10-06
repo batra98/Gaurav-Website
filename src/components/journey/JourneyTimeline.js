@@ -412,10 +412,6 @@ const JourneyTimeline = ({ data, activeItem, onItemClick, onItemHover }) => {
                   <StatusBadge>Currently here</StatusBadge>
                 )}
                 
-                {item.upcoming && (
-                  <StatusBadge>Upcoming - Summer 2025</StatusBadge>
-                )}
-                
                 <CardDescription>{item.description}</CardDescription>
                 
                 {item.achievements && item.achievements.length > 0 && (
