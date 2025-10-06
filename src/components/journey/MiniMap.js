@@ -5,15 +5,15 @@ import { theme, media } from '@styles';
 const { colors, fontSizes, fonts } = theme;
 
 // Dynamic imports for Leaflet (client-side only)
-let MapContainer, TileLayer, Marker, Polyline, useMap, L;
+let LeafletMapContainer, LeafletTileLayer, LeafletMarker, LeafletPolyline, LeafletUseMap, L;
 
 if (typeof window !== 'undefined') {
   const leaflet = require('react-leaflet');
-  MapContainer = leaflet.MapContainer;
-  TileLayer = leaflet.TileLayer;
-  Marker = leaflet.Marker;
-  Polyline = leaflet.Polyline;
-  useMap = leaflet.useMap;
+  LeafletMapContainer = leaflet.MapContainer;
+  LeafletTileLayer = leaflet.TileLayer;
+  LeafletMarker = leaflet.Marker;
+  LeafletPolyline = leaflet.Polyline;
+  LeafletUseMap = leaflet.useMap;
   L = require('leaflet');
   require('leaflet/dist/leaflet.css');
 }
@@ -149,10 +149,8 @@ const LoadingContainer = styled.div`
 `;
 
 // Component to handle map view updates
-const MapViewController = ({ activeLocation, data }) => {
-  if (!useMap) return null;
-  
-  const map = useMap();
+function MapViewController({ activeLocation, data }) {
+  const map = LeafletUseMap();
   
   useEffect(() => {
     if (!map) return;
@@ -178,7 +176,7 @@ const MapViewController = ({ activeLocation, data }) => {
   }, [activeLocation, map, data]);
   
   return null;
-};
+}
 
 // Create custom marker icon
 const createMarkerIcon = (location, isActive) => {
@@ -257,7 +255,7 @@ const MiniMap = ({ data, activeLocation, onLocationClick }) => {
     ? data.findIndex(loc => loc.id === activeLocation.id) + 1
     : 0;
   
-  if (!isLoaded || !MapContainer || !TileLayer || !Marker || !Polyline) {
+  if (!isLoaded || !LeafletMapContainer || !LeafletTileLayer || !LeafletMarker || !LeafletPolyline) {
     return (
       <MapContainer_Styled>
         <LoadingContainer>🗺️ Loading map...</LoadingContainer>
@@ -288,7 +286,7 @@ const MiniMap = ({ data, activeLocation, onLocationClick }) => {
         </LocationCounter>
       </MapHeader>
       
-      <MapContainer
+      <LeafletMapContainer
         center={[20, 30]}
         zoom={2}
         zoomControl={true}
@@ -298,13 +296,13 @@ const MiniMap = ({ data, activeLocation, onLocationClick }) => {
         style={{ height: '100%', width: '100%' }}
       >
         {/* Dark theme tiles */}
-        <TileLayer
+        <LeafletTileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
           url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
         />
         
         {/* Journey path line */}
-        <Polyline
+        <LeafletPolyline
           positions={pathCoordinates}
           pathOptions={{
             color: colors.green,
@@ -319,7 +317,7 @@ const MiniMap = ({ data, activeLocation, onLocationClick }) => {
         
         {/* Active path (progress line) */}
         {activeLocation && (
-          <Polyline
+          <LeafletPolyline
             positions={pathCoordinates.slice(0, activeIndex)}
             pathOptions={{
               color: colors.purple,
@@ -337,7 +335,7 @@ const MiniMap = ({ data, activeLocation, onLocationClick }) => {
           const isPast = activeLocation && index < activeIndex - 1;
           
           return (
-            <Marker
+            <LeafletMarker
               key={location.id}
               position={[location.coordinates[1], location.coordinates[0]]}
               icon={createMarkerIcon(location, isActive)}
@@ -350,7 +348,7 @@ const MiniMap = ({ data, activeLocation, onLocationClick }) => {
         })}
         
         <MapViewController activeLocation={activeLocation} data={data} />
-      </MapContainer>
+      </LeafletMapContainer>
     </MapContainer_Styled>
   );
 };
